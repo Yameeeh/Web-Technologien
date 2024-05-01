@@ -2,6 +2,8 @@
 Gruppe 6:
 Lucas Bockholt - Louis Ranck - Michel Path
 
+Idee:
+Website zum Informationserhalt und Austausch über die Deutschland Fußball EM 2024
 
 Frontend:
   Vue.js / Angular / React -> Javascript/Typescript
