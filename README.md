@@ -13,9 +13,7 @@ Backend:
 
 
 Features benötigt:
-
 Homepage (Hot Topics, upcoming game)
-
 Turnier-Infos (Teams, erstmal nur DE, und Standorte)
 
 Tabellen Standings
