@@ -11,12 +11,12 @@ Backend:
 
 
 Features benötigt:
-Homepage (Hot Topics, upcoming game)
-Turnier-Infos (Teams, erstmal nur DE, und Standorte)
-Tabellen Standings
-Live-Tracker + Schedule
+Homepage (Hot Topics, upcoming game);
+Turnier-Infos (Teams, erstmal nur DE, und Standorte);
+Tabellen Standings;
+Live-Tracker + Schedule;
 Forum (Account benötigt zum posten/kommentieren)
 
 Features möglich:
-"Wetten" auf Spiele
+"Wetten" auf Spiele;
 Social Systems (Freunde, Privatchat etc) 
