@@ -1,5 +1,5 @@
 # Web-Technologien
-Gruppe 6
+Gruppe 6:
 Lucas Bockholt - Louis Ranck - Michel Path
 
 
