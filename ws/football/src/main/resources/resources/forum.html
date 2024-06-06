@@ -16,6 +16,17 @@
         font-family: "Montserrat, sans-serif";
         background-color: black;
     } 
+
+    body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+    .container {
+        display: flex;
+        flex: 1;
+    }
     
     .header {
         position: fixed;
@@ -144,15 +155,14 @@
     }
 
     .sidebar {
-        width: 2500px;
+        width: 25%;
         height: 1000px;
         border-style: solid;
         border-color: #C1A875;
         border-width: 2px;
-        position: fixed;
+    position: fixed;
         margin-top: 108px;
-        transition: 0.3s;
-        overflow: hidden;
+        transition: all 0.3s;
     }
 
     .sidebar li {
@@ -164,11 +174,13 @@
         margin-left: 55px;
     }
 
+    .button-18 {
+        margin-left: -10px;
+    }
+
 
 .sidebar-icon {
     height: 30px;
-    display: flex;
-    align-items: center;
 }
 
     .sidebar li .text {
@@ -178,7 +190,6 @@
     }
 
     .sidebar li a {
-        text-decoration: none;
         height: 100%;
         display: flex;
         align-items: center;
@@ -237,11 +248,14 @@ margin-top: 20px;
     color: white;
     font-size: 2rem;
     cursor: pointer;
-    display: none;
-
+        display: none;
     }
 
-    @media (max-width: 1146px) {
+    .sidebar input[type="checkbox"]:checked ~ .menu-block {
+    display: block;
+}
+
+    @media (max-width: 1100px) {
     .sidebar-menu {
         display: flex;
         justify-content: center;
@@ -252,10 +266,10 @@ margin-top: 20px;
         display: none
     }
     .sidebar li {
-        display: flex;
+        display: block;
         justify-content: center;
         align-items: center;
-        margin-left: 0px;
+        margin-left: 33px;
         margin-top: 10px;
     }
     #check2:checked ~ .sidebar-menu #icon-menu2 {
@@ -270,25 +284,207 @@ margin-top: 20px;
     #check2:checked ~ .sidebar {
     width: 20rem;
     }
-    .sidebar {
-    position: absolute;
 
-    left: 0%;
-    
-    margin-left: 0px;
-    
-    background: rgb(black);
-    border-style: solid;
-    border-color: #C1A875;
-    border-width: 1px;
-    overflow: hidden;
-    transition: .2s ease;
-    }
     .sidebar input[type="checkbox"]:checked ~ .menu-block .nav-text {
         display: inline;
+
+    }
+   
+}
+
+.main {
+    width: 75%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+    background-color: black;
+    margin-left: 25%;
+    margin-top: 110px;
+}
+
+@media (max-width: 1100px) {
+    .main {
+        margin-left: 100px;
+        width: calc(100% - 100px);
     }
 }
-    
+
+.commentsection {
+    text-align: center;
+    width: 60%;
+    height: 100vh;
+    background-color: rgb(10, 10, 10);
+    border: 1px solid rgba(80, 80, 80, 0.5);
+
+}
+
+
+
+.button-18 {
+  align-items: center;
+  background-color:#C1A875;
+  border: 0;
+  border-radius: 100px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-flex;
+margin-top: 35px;
+  font-size: 25px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 20px;
+  width: 80%;
+  min-height: 50px;
+  
+  overflow: hidden;
+  padding: 0px;
+  
+  text-align: center;
+  touch-action: manipulation;
+  transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+}
+
+.button-18:hover,
+.button-18:focus { 
+  background-color: #8d7950;
+  color: #ffffff;
+}
+
+.popup .overlay {
+    position: fixed;
+      top: 0px;
+      left: 0px;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(201, 201, 201, 0.5);
+      opacity: 0.5;
+      z-index: 1;
+      display: none;
+  }
+  .popup .content {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      background: black;
+      width: 550px;
+      height: 290px;
+      z-index: 2;
+      text-align: center;  
+      padding: 20px; 
+      box-sizing: border-box; 
+      border-radius: 18px;
+  }
+  .popup .close-btn {
+      cursor: pointer;
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      width: 30px;
+      height: 30px;
+      color: #fff;
+      font-size: 25px;
+      font-weight: 600;
+      line-height: 30px;
+      text-align: center;
+      border-radius: 50%;
+  }
+  .popup.active .overlay {
+      display: block;
+  }
+  .popup.active .content {
+      transition: all 300ms ease-in-out;
+  transform: translate(-50%, -50%) scale(1);
+  }
+ .popup .commentbox {
+    display: flex;
+    padding: 3px;
+    margin-top: 50px;
+ }
+ .popup .commentbox .userimage {
+    width: 50px;
+ }
+ .popup .commentbox .userimage {
+width: 45px;
+border-radius: 50%;
+object-fit: cover;
+object-position: center;
+ }
+.popup .commentinput {
+    width: 100%;
+}
+.popup .commentinput > textarea {
+    display: flex;
+    border: none;
+    padding: 10px;
+    padding-left: 20px;
+    outline: none;
+    width: 100%;
+    height: 150px;
+    font-size: 22px;
+    color: white;
+    overflow: auto;
+    resize: none;
+}
+.popup .bottomsection {
+    display: flex;
+    height: 50px;
+    margin-top: 5px;
+    border-top: 1px solid lightgrey;;
+}
+.popup .bottomsection .icons {
+    width: 70%;
+    display: flex;
+}
+.popup .bottomsection .icons button {
+    border: none;
+    cursor: pointer;
+    appearance: none;
+    background-color: inherit;
+}
+.popup .bottomsection img {
+    margin-top: 14px;
+    width: 27px;
+    height: 27px;
+
+}
+
+.popup .bottomsection .post-button {
+    width: 30%;
+}
+.popup .bottomsection .button-18 {
+    margin-top: 10px;
+    margin-left: 50px;
+    align-items: center;
+    min-height: 35px;
+    width: 90px;
+    font-size: 18px;
+}
+
+#imageOutput {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.popup .commentbox img {
+    max-width: 100%;
+    max-height: 400px;
+    border-radius: 18px;
+}
+.popup .commentbox img.portrait {
+    width: auto;
+    height: 100%;
+}
+.popup .commentbox img.landscape {
+    width: 100%;
+    height: auto;
+}
 
     </style>
 
@@ -308,8 +504,9 @@ margin-top: 20px;
                 <a href="#">Login</a>
             </nav>
         </header>
-            <div class="sidebar">
-                <input type="checkbox" id="check2">
+        <div class="container">
+            <aside class="sidebar">
+                    <input type="checkbox" id="check2">
                     <label for="check2" class="sidebar-menu">
                         <i class="bx bx-menu" id="icon-menu2"></i>
                         <i class="bx bx-x" id="close-menu2"></i>
@@ -333,8 +530,8 @@ margin-top: 20px;
                             <span class="text nav-text">Zuletzt geteilt</span>
                         </a>
                     </li>
-                    <div class="strich">
-                    </div>
+                    <!-- <div class="strich">
+                    </div> //-->
                     <li class="nav-link">
                         <a href="#">
                             <img src="img/icon-topic.png" class="sidebar-icon" id="icon4"></i>
@@ -365,17 +562,75 @@ margin-top: 20px;
                             <span class="text nav-text">Topic 5</span>
                         </a>
                     </li>
-                    <div class="strich">
-                    </div>
+                    <!-- <div class="strich">
+                    </div> //-->
                     <li class="nav-link">
                         <a href="#">
                             <img src="img/icon-topic.png" class="sidebar-icon"></i>
                             <span class="text nav-text">Topic 5</span>
                         </a>
                     </li>
+                    <li class="nav-link">
+                        <button onclick="togglePopup()" class="button-18">Posten</button>
+                    </li>
+                </aside>
+                <div class="popup" id="popup-1">
+                    <div class="overlay"></div>
+                    <div class="content" id="content">
+                        <div class="commentbox">
+                            <div class="userimage">
+                                <img src="img/user.png" class="userimage">
+                            </div>
+                            <div class="commentinput">
+                                <textarea type="text" id="userComment" placeholder="Was gibt's Neues?!" class="usercomment"></textarea>
+                                <div id="imageOutput"></div>
+                            </div>
+                        </div>
+                        <div class="bottomsection">
+                            <div class="icons">
+                                <button id="uploadButton">
+                                    <img src="img/popup-gallery.png" alt="Upload Image">
+                                </button>
+                                <input type="file" id="fileInput" accept="image/*" style="display:none">
+                            </div>
+                            <div class="post-button">
+                                <button class="button-18">Posten</button>
+                            </div>
+                        </div>
+                        <div class="close-btn" onclick="togglePopup()">&times;
+                        </div>
+                    </div>
                 </div>
-                </div>
-            
+                
+                
+
+
+
+                <main class="main">
+                    <div class="commentsection">
+                        <div class="comment">
+                            <article class="article">
+                                <div class="comment-profilepicturesection">
+                                </div>
+                                <div class="comment-mainsection">
+                                    <div class="comment-publisher">
+                                    </div>
+                                    <div class="comment-text">
+                                    </div>
+                                    <div class="comment-media">
+                                    </div>
+                                    <div class="comment-bottom">
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </main>
+            </div>     
+                
+
+
+
                 <script src="script2.js"></script>
     </body>
     </html>
