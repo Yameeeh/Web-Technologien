@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 </head>
 
 <style>
     * {
+        font-family: "Rubik", sans-serif;
         margin: 0;
         padding: 0;
         box-sizing: border-box;
@@ -19,7 +21,7 @@
         justify-content: center;
         align-items: center;
         min-height: 100vh;
-        background: url('img/dfb-design-fanclub-poldi.jpg') no-repeat;
+        background: url('img/dfb-design-fanclub-poldi2.jpg') no-repeat;
         background-size: cover;
         background-position: center;;
     }
@@ -157,14 +159,30 @@ font-size: 20px;
 }
 
 .wrapper {
+    display: flex;
+    position: relative;
     width: 420px;
+    height: 420px;
     background: transparent;
     border: 2px solid rgba(255,255,255, .2);
     backdrop-filter: blur(20px);
     color: #fff;
     border-radius: 10px;
     padding: 30px 40px;
+    align-items: center;
+    justify-content: center;
+    transition: height .2s ease;
+    overflow: hidden;
 }
+
+.wrapper.active {
+    height: 520px;
+}
+
+.form-box {
+    flex: 1;
+}
+
 .wrapper h1 {
     font-size: 36px;
     text-align: center;
@@ -210,19 +228,58 @@ font-size: 20px;
     color: #333;
     font-weight: 600;
 }
-.wrapper .register-link {
+.wrapper .link {
     font-size: 14.5px;
     text-align: center;
     margin: 20px 0 15px;
 }
-.register-link p a {
+
+.link p a {
     color: #fff;
     text-decoration: none;
     font-weight: 600;
 }
-.register-link p a:hover {
+.link p a:hover {
     text-decoration: underline;
 }
+
+.wrapper .form-box.login {
+    transition: transform .18s ease;
+    transform: translateX(0);
+}
+
+.wrapper.active .form-box.login {
+    transition: none;
+    transform: translateX(-400px);
+}
+
+.wrapper .form-box.register {
+    position: absolute;
+    transition: none;
+    transform: translateX(400px);
+}
+
+.wrapper.active .form-box.register {
+    transition: transform .18s ease;
+    transform: translateX(0);
+}
+
+.checkbox {
+    font-size: .9em;
+    color: #fff;
+    font-weight: 500;
+    margin: -15px 0 15px;
+    display: flex;
+    justify-content: space-between;
+}
+.checkbox label input {
+    accent-color: #fff;
+    text-decoration: none;
+}
+.checkbox-warning {
+    color: #C1A875;
+}
+
 </style>
 
 <body>
@@ -242,7 +299,7 @@ font-size: 20px;
         </nav>
         </header>
     <div class="wrapper">
-        <form action="">
+        <form class="form-box login">
             <h1>Login</h1>
             <div class="input-box">
                 <input type="text" placeholder="Benutzername"
@@ -255,11 +312,40 @@ font-size: 20px;
                 <i class='bx bxs-lock-alt'></i>
             </div>
             <button type="submit" class="btn">Login</button>
-            <div class="register-link">
+            <div class="link register-link">
                 <p>Du hast noch keinen Account? <a
                 href="#">Registrieren</a></p>
             </div>
         </form>
+
+        <form class="form-box register">
+            <h1>Registrieren</h1>
+            <div class="input-box">
+                <input type="text" placeholder="Benutzername"
+                required>
+                <i class='bx bxs-user'></i>
+            </div>
+            <div class="input-box">
+                <input type="email" placeholder="Email"
+                required>
+                <i class='bx bxs-envelope' style='color:#ffffff'  ></i>
+            </div>
+            <div class="input-box">
+                <input type="text" placeholder="Passwort"
+                required>
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+            <div class="checkbox">
+                <label id="label"><input type="checkbox" id="checkbox">  Ich stimme den Nutzungsbedingungen zu</label>
+            </div>
+            <button type="submit" class="btn" id="button">Registrieren</button>
+            <div class="link login-link">
+                <p>Du hast bereits einen Account? <a
+                href="#">Login</a></p>
+            </div>
+        </form>
     </div>
+    <script src="login.js"></script>
+
 </body>
 </html>

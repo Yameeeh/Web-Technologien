@@ -6,14 +6,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
         <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
     </head>
 
     <style>
         * {
+            font-family: "Rubik", sans-serif;
         padding: 0;
         margin:0;
         box-sizing: border-box;
-        font-family: "Montserrat, sans-serif";
+  
         background-color: black;
     } 
 
@@ -467,9 +470,12 @@ object-position: center;
 }
 
 #imageOutput {
-    display: flex;
+   /* display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: flex-start; */
+    max-width: 100%; /* Sicherstellen, dass das Bild nicht den Container überläuft */
+    height: auto;
+    position: relative;
 }
 
 .popup .commentbox img {
@@ -485,7 +491,54 @@ object-position: center;
     width: 100%;
     height: auto;
 }
+#uploadMessage {
+    display: none;
+    color: #C1A875;
+    margin-top: 10px;
+}
+.close-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    width: 27px;
+    height: 27px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+}
 
+#uploadButton[disabled] {
+    position: relative;
+}
+
+#uploadButton[disabled]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 120%; /* Tooltip unter dem Button */
+    background-color: #333;
+    color: #C1A875; /* Schriftfarbe rot */
+    padding: 5px;
+    border-radius: 5px;
+    white-space: nowrap;
+    z-index: 1000;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+#uploadButton[disabled]:hover::after {
+    display: block;
+    opacity: 1;
+}
     </style>
 
     <body>
@@ -588,9 +641,10 @@ object-position: center;
                         </div>
                         <div class="bottomsection">
                             <div class="icons">
-                                <button id="uploadButton">
+                                <button id="uploadButton" title="Upload Photo">
                                     <img src="img/popup-gallery.png" alt="Upload Image">
                                 </button>
+                                <p id="uploadMessage" style="display: none; color: red;">Es kann nur ein Foto hochgeladen werden</p>
                                 <input type="file" id="fileInput" accept="image/*" style="display:none">
                             </div>
                             <div class="post-button">
@@ -631,6 +685,6 @@ object-position: center;
 
 
 
-                <script src="script2.js"></script>
+                <script src="forum.js"></script>
     </body>
     </html>
