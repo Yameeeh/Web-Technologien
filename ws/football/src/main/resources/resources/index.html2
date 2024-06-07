@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+</head>
+<body>
+    <header class="header">
+        <a href="#"><img src="assets/Logo.png" class="logo"></a>
+        <input type="checkbox" id="check">
+        <label for="check" class="menu">
+            <i class="bx bx-menu" id="icon-menu"></i>
+            <i class="bx bx-x" id="close-menu"></i>
+        </label>    
+        <nav class="navbar">
+            <a href="#">Startseite</a>
+            <a href="#">Euro 2024</a>
+            <a href="#">Ergebnisse</a>
+            <a href="#">Forum</a>
+            <a href="#">Login</a>
+        </nav>
+    </header>
+    <main></main> <!-- Bild ist mit CSS eingefügt -->
+    <section class="striche">
+        <div class="linie"></div>
+        <div class="linie"></div>
+        <div class="linie"></div>
+        <div class="linie"></div>
+        <div class="linie"></div>
+    </section>
+    <div class="mannschaft">
+        <div>DIE&nbsp;</div>
+        <img src="assets/Logo_gold.png" class="logo2">
+        <div>&nbsp;MANNSCHAFT</div>
+    </div>
+    <div class="fotowand">
+        <div class="grundlinie"></div>
+        <div class="linie-links"></div>
+        <div class="linie-rechts"></div>
+        <div class="linie-unten"></div>
+        <img src="assets/wirtz.webp" class="wirtz">
+        <img src="assets/mannschaftfoto.jpg" class="mannschaftfoto">
+        <div class="linie-strafraum"></div>
+        <div class="half-circle"></div>
+        <img src="assets/kroos.jpg" class="kroos">
+        <img src="assets/trainer.jpg" class="trainer">
+    </div>
+    <div class="ergebnisse"></div>
+    <img src="assets/fans.jpg" class="fanfoto">
+    <img src="assets/dfb-spielfeld-fanclub-unten (1).svg" class="line">
+    <div class="ende">
+        <img src="assets/fanclub.jpg" class="fanclub">
+    </div>
+    <footer class="footer">
+        <p>
+            <a href="#" id="termsLink">Nutzungsvereinbarung</a> | 
+            <a href="#" id="privacyLink">Datenschutzvereinbarung</a> | 
+            &copy; <span id="year"></span>
+        </p>
+    </footer>
+
+    <!-- Modals -->
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeTerms">&times;</span>
+            <h2>Nutzungsvereinbarung</h2>
+            <p>Nutzungsvereinbarungstext...</p>
+        </div>
+    </div>
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closePrivacy">&times;</span>
+            <h2>Datenschutzvereinbarung</h2>
+            <p>Datenschutzvereinbarungstest...</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
