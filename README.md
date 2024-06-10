@@ -6,7 +6,7 @@ Idee:
 Website zum Informationserhalt und Austausch über die Deutschland Fußball EM 2024
 
 Frontend:
-  Vue.js / Angular / React -> Javascript/Typescript
+  HTML + CSS + JS
 
 Backend:
   Java + Springboot
