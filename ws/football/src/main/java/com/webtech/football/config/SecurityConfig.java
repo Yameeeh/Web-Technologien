@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -33,13 +34,26 @@ public class SecurityConfig {
 
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+//		http.csrf(AbstractHttpConfigurer::disable)
+//				.authorizeHttpRequests(
+//						authorizationManagerRequestMatcherRegistry -> authorizationManagerRequestMatcherRegistry
+//								.requestMatchers(HttpMethod.DELETE).hasRole("ADMIN").requestMatchers("/admin/**")
+//								.hasAnyRole("ADMIN").requestMatchers("/user/**").hasAnyRole("USER", "ADMIN")
+//								.requestMatchers("/login/**").permitAll().anyRequest().authenticated())
+//				.httpBasic(Customizer.withDefaults()).formLogin(Customizer.withDefaults())
+//				.userDetailsService(userDetailsService());
+
 		http.csrf(AbstractHttpConfigurer::disable)
 				.authorizeHttpRequests(
 						authorizationManagerRequestMatcherRegistry -> authorizationManagerRequestMatcherRegistry
 								.requestMatchers(HttpMethod.DELETE).hasRole("ADMIN").requestMatchers("/admin/**")
 								.hasAnyRole("ADMIN").requestMatchers("/user/**").hasAnyRole("USER", "ADMIN")
-								.requestMatchers("/login/**").permitAll().anyRequest().authenticated())
-				.httpBasic(Customizer.withDefaults()).formLogin(Customizer.withDefaults())
+								.requestMatchers("/", "/index.html", "/public/**", "/home", "/login/**").permitAll()
+								.anyRequest().authenticated())
+				.httpBasic(Customizer.withDefaults())
+				.formLogin(formLogin -> formLogin.loginPage("/login").defaultSuccessUrl("/home", true).permitAll())
+				.logout(logout -> logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+						.logoutSuccessUrl("/login?logout").permitAll())
 				.userDetailsService(userDetailsService());
 
 		return http.build();
