@@ -11,23 +11,26 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 @Entity
-@Table(name = "users")
+@Table(name = "USER")
 @Data
 @NoArgsConstructor
 public class User {
 
 	@Id
+	@Column(name = "ID")
 	@GeneratedValue(strategy = GenerationType.UUID)
 	private String id;
 
 	@NonNull
-	@Column(unique = true)
+	@Column(name = "USERNAME", unique = true)
 	private String username;
 
 	@NonNull
+	@Column(name = "PASSWORD")
 	private String password;
 
 	@NonNull
+	@Column(name = "EMAIL")
 	private String email;
 
 }
