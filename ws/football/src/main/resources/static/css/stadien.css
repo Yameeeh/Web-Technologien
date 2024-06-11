@@ -363,19 +363,25 @@ font-size: 20px;
         align-items: center;
         justify-content: center;
         flex-direction: column;
-    }
-
-    .container2 {
-        width: 70%;
-        height: 500px;
-        background-color: red;
-        display: flex;
-       text-align: center;
         
+        background-position: top;
     }
-    .text-info {
+    #bayern {
+        background: url('img/bayern-logo.jpg');
+        height: 100vh;
+    }
+    
+    .main-container {
+        
+        
+      
+        display: flex;
+        flex-wrap: wrap;
+        width: 80%;
+        margin-top: 20px;
+    }
+    /*.text-info {
         width: 50%;
-        flex: 1;
         height: 100px;
         margin-top: 50px;
     }
@@ -391,16 +397,54 @@ font-size: 20px;
         width: 50%;
         flex: 1;
         height: 100px;
+    }*/
+
+
+    .container2 {
+        flex: 1 1 50%;
+        box-sizing: border-box;
+        padding: 10px;
+        text-align: center;
+    }
+    #text-ganz {
+        flex: 1 1 100%; /* Nimmt die gesamte Breite ein */
+    
+    }
+    #text-info {
+       
+    }
+    #text-bild {
+    
+        border-radius: 18px;
+    }
+    #text-ganz p {
+        font-size: 10px;
+        hyphens: auto; 
+	text-align: justify;
+    color: #fff;
+
     }
 
-    #berlin .text-info {
+    #text-bild img {
+        width: 100%;
+        border-radius: 18px;
+    }
+
+    #text-info h1 {
+        text-align: left;
         font-size: 50px;
+        color: #fff;
     }
+    #text-info p {
+        text-align: left;
+        margin-top: 15px;
+        font-size: 25px;
+        margin-left: 60px;
+        color: #fff;
 
-    .container-münchen {
-        width: 70%;
-        height: 500px;
-        background-color: blue;
-        display: flex;
-        flex: 1;
+    }
+    #text-ganz p {
+        font-size: 20px;
+        margin-left: 60px;
+   
     }
