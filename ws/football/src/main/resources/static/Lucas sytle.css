@@ -270,37 +270,91 @@ font-size: 20px;
     width: 100%;
     background-size: cover;
     background-position: center;
+  
   }
   
 
 
 .ende {
-    height: 150vh;
+    height: 50vh;
     background-color: black;
     margin-top: -5px;
+    width: 100%;
+
+}
+
+/* Newsletter Section */
+.background {
     position: relative;
-}
-
-.linie {
-    background-color: white;
     width: 100%;
-    height: 40px;
-    opacity: 0.5;
-    margin-top: -40px;
+    height: 400px;
 }
 
-.ende {
-    position: static;
+.background-image {
+    position: absolute;
     width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
 }
 
-.fanclub { 
-    display: block;
-    margin: 0 auto;
-    margin-top: 250px;
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5);
 }
-.line {
-    width: 1%;
+
+.banner {
+    max-width: 300px;
+}
+
+.newsletter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.newsletter-left h2 {
+    font-size: 2rem;
+    margin: 20px 0;
+}
+
+.newsletter-right {
+    max-width: 500px;
+    margin: 20px;
+}
+
+.newsletter-right p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.newsletter-right form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.newsletter-right input[type="email"] {
+    padding: 10px;
+    margin-right: 10px;
+    flex: 1;
+    min-width: 250px;
+}
+
+.newsletter-right button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
 }
 
 .footer {
@@ -366,4 +420,23 @@ font-size: 20px;
 .close:hover,
 .close:focus {
     cursor: pointer;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .header .logo {
+        max-width: 80px;
+    }
+
+    .mannschaft {
+        font-size: 1.5rem;
+    }
+
+    .newsletter-right input[type="email"] {
+        margin-bottom: 10px;
+    }
+
+    .newsletter-right button {
+        width: 100%;
+    }
 }
