@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 </head>
+
 <body>
     <header class="header">
         <a href="#"><img src="assets/Logo.png" class="logo"></a>
@@ -23,52 +24,54 @@
             <a href="#">Forum</a>
             <a href="#">Login</a>
         </nav>
-    </header>
-    <main></main> <!-- Bild ist mit CSS eingefügt -->
-    <section class="striche">
-        <div class="linie"></div>
-        <div class="linie"></div>
-        <div class="linie"></div>
-        <div class="linie"></div>
-        <div class="linie"></div>
-    </section>
-    <div class="mannschaft">
-        <div>DIE&nbsp;</div>
-        <img src="assets/Logo_gold.png" class="logo2">
-        <div>&nbsp;MANNSCHAFT</div>
-    </div>
-    <div class="fotowand">
-        <div class="grundlinie"></div>
-        <div class="linie-links"></div>
-        <div class="linie-rechts"></div>
-        <div class="linie-unten"></div>
-        <img src="assets/wirtz.webp" class="wirtz">
-        <img src="assets/mannschaftfoto.jpg" class="mannschaftfoto">
-        <div class="linie-strafraum"></div>
-        <div class="half-circle"></div>
-        <img src="assets/kroos.jpg" class="kroos">
-        <img src="assets/trainer.jpg" class="trainer">
-    </div>
-    <div class="ergebnisse"></div>
-    <img src="assets/fans.jpg" class="fanfoto">
-    <img src="assets/dfb-spielfeld-fanclub-unten (1).svg" class="line">
-    <div class="ende">
-        <img src="assets/fanclub.jpg" class="fanclub">
-    </div>
-    <footer class="footer">
-        <p>
-            <a href="#" id="termsLink">Nutzungsvereinbarung</a> | 
-            <a href="#" id="privacyLink">Datenschutzvereinbarung</a> | 
-            &copy; <span id="year"></span>
-        </p>
-    </footer>
+        </header>
+        <main></main> <!-- Bild ist mit css eingefügt -->
+        <section class="striche">
+            <div class="linie"></div>
+            <div class="linie"></div>
+            <div class="linie"></div>
+            <div class="linie"></div>
+            <div class="linie"></div>
+        </section>
+        <div class="mannschaft">
+            <div>DIE&nbsp;</div>
+            <img src="assets/Logo_gold.png" class="logo2">
+            <div>&nbsp;MANNSCHAFT</div>
+        </div>
+        <div class="fotowand">
+            <div class="grundlinie"></div>
+            <div class="linie-links"></div>
+            <div class="linie-rechts"></div>
+            <div class="linie-unten"></div>
+            <img src="assets/wirtz.webp" class="wirtz">
+            <img src="assets/mannschaftfoto.jpg" class="mannschaftfoto">
+            <div class="linie-strafraum"></div>
+            <div class="half-circle"></div>
+            <img src="assets/kroos.jpg" class="kroos">
+            <img src="assets/trainer.jpg" class="trainer">
+        </div>
+        <div class="ergebnisse"></div>
+        <img src="assets/fans.jpg" class="fanfoto">
+        <img src="assets/dfb-spielfeld-fanclub-unten (1).svg" class="line">
+        <div class="ende">
+            <img src="assets/fanclub.jpg" class="fanclub">
+        </div>
 
-    <!-- Modals -->
-    <div id="termsModal" class="modal">
-        <div class="modal-content">
-            <span class="close" id="closeTerms">&times;</span>
-            <h2>Nutzungsvereinbarung für die Website "Die Mannschaft EM 2024"</h2>
-            <p> Bitte lies diese Nutzungsvereinbarung sorgfältig durch, bevor du die Website "Die Mannschaft EM 2024" nutzt. Durch die Nutzung dieser Website stimmst du den unten aufgeführten Bedingungen uneingeschränkt zu.<br>
+
+        <footer class="footer">
+            <p>
+                <a href="#" id="termsLink">Nutzungsvereinbarung</a> | 
+                <a href="#" id="privacyLink">Datenschutzvereinbarung</a> | 
+                &copy; <span id="year"></span>
+            </p>
+        </footer>
+    
+        <!-- Modals -->
+        <div id="termsModal" class="modal">
+            <div class="modal-content">
+                <span class="close" id="closeTerms">&times;</span>
+                <h2>Nutzungsvereinbarung für die Website "Die Mannschaft EM 2024"</h2>
+                <p> Bitte lies diese Nutzungsvereinbarung sorgfältig durch, bevor du die Website "Die Mannschaft EM 2024" nutzt. Durch die Nutzung dieser Website stimmst du den unten aufgeführten Bedingungen uneingeschränkt zu.<br>
                 
                 Akzeptanz der Nutzungsbedingungen:<br> Durch die Nutzung der Website "Die Mannschaft EM 2024" und aller dazugehörigen Dienste stimmst du diesen Nutzungsbedingungen zu und erklärst dich damit einverstanden, an sie gebunden zu sein. Wenn du diesen Bedingungen nicht zustimmst, ist es dir untersagt, die Website zu nutzen.<br>
                 
@@ -87,13 +90,13 @@
                 Änderungen der Nutzungsbedingungen:<br>Die Betreiber der Website "Die Mannschaft EM 2024" behalten sich das Recht vor, diese Nutzungsbedingungen jederzeit zu ändern. Änderungen werden auf der Website veröffentlicht und treten sofort in Kraft. Durch die fortgesetzte Nutzung der Website stimmst du den geänderten Nutzungsbedingungen zu.<br>
                 
                 Durch die Nutzung der Website "Die Mannschaft EM 2024" erklärst du, dass du diese Nutzungsbedingungen gelesen, verstanden und akzeptiert hast. Wenn du mit diesen Bedingungen nicht einverstanden bist, ist es dir untersagt, die Website zu nutzen.</p>
+            </div>
         </div>
-    </div>
-    <div id="privacyModal" class="modal">
-        <div class="modal-content">
-            <span class="close" id="closePrivacy">&times;</span>
-            <h2>Datenschutzvereinbarung für die Website "Die Mannschaft EM 2024"</h2>
-            <p> Wir bei "Die Mannschaft EM 2024" nehmen den Schutz deiner persönlichen Daten sehr ernst. Diese Datenschutzvereinbarung erklärt, wie wir die von dir bereitgestellten Daten erfassen, verwenden, offenlegen und schützen, wenn du unsere Website besuchst und unsere Dienste nutzt.<br>
+        <div id="privacyModal" class="modal">
+            <div class="modal-content">
+                <span class="close" id="closePrivacy">&times;</span>
+                <h2>Datenschutzvereinbarung für die Website "Die Mannschaft EM 2024"</h2>
+                <p> Wir bei "Die Mannschaft EM 2024" nehmen den Schutz deiner persönlichen Daten sehr ernst. Diese Datenschutzvereinbarung erklärt, wie wir die von dir bereitgestellten Daten erfassen, verwenden, offenlegen und schützen, wenn du unsere Website besuchst und unsere Dienste nutzt.<br>
                 
                 Erhebung und Nutzung von Daten:<br>
                 
@@ -113,11 +116,11 @@
                 
                 Wir behalten uns das Recht vor, diese Datenschutzvereinbarung jederzeit zu ändern. Alle Änderungen werden auf dieser Seite veröffentlicht, und die geänderte Vereinbarung tritt sofort in Kraft. Durch die fortgesetzte Nutzung unserer Website stimmst du den geänderten Bedingungen zu.<br>
                 
-                
                 Durch die Nutzung unserer Website stimmst du der Erhebung und Verwendung deiner Daten gemäß dieser Datenschutzvereinbarung zu. Wenn du mit dieser Vereinbarung nicht einverstanden bist, ist es dir untersagt, unsere Dienste zu nutzen.</p>
+            </div>
         </div>
     </div>
-
+    
     <script src="script.js"></script>
 </body>
 </html>
