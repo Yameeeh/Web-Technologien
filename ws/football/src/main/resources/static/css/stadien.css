@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 .header {
@@ -358,48 +359,73 @@ font-size: 20px;
 
 
     /* Rest der Seite */
+ 
     .container {
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        
-        background-position: top;
     }
     #bayern {
-        background: url('img/bayern-logo.jpg');
+        background: url('assets/bayern-logo.jpg');
         height: 100vh;
-    }
+        background-position: center;
     
+    }
+    #berlin {
+        background: url('assets/berlin-logo.jpg');
+        height: 100vh;
+        background-position: center ;
+        background-size: cover ;
+    }
+    #dortmund {
+        background: url('assets/dortmund-logo.jpg');
+        height: 100vh;
+        background-position: center;
+        background-size: cover;
+    }
+    #hamburg {
+        background: url('assets/hamburg-logo.jpg');
+        height: 100vh;
+        background-position: center;
+        background-size: cover;
+    }
+    #frankfurt {
+        background: url('assets/frankfurt-logo.jpg');
+        height: 100vh;
+        background-position: center;
+        background-size: cover;
+    }
+    #gelsenkirchen {
+        background: url('assets/gelsenkirchen-logo.jpg');
+        height: 100vh;
+        background-position: center;
+        background-size: cover;
+    }
+    #leipzig {
+        background: url('assets/leipzig-logo.jpg');
+        height: 100vh;
+        background-position: center;
+        background-size: cover;
+    }
+    #düsseldorf {
+        background: url('assets/düsseldorf-logo.jpg');
+        height: 100vh;
+        background-position: center;
+        background-size: cover;
+    }
+    #köln {
+        background: url('assets/köln-logo.jpg');
+        height: 100vh;
+        background-position: center;
+        background-size: cover;
+    }
     .main-container {
-        
-        
-      
         display: flex;
         flex-wrap: wrap;
         width: 80%;
         margin-top: 20px;
     }
-    /*.text-info {
-        width: 50%;
-        height: 100px;
-        margin-top: 50px;
-    }
-    .text-info p {
-        font-size: 10px;
-        
-    }
-    .text-info h1 {
-        font-size: 30px;
-        
-    }
-    .text-bild {
-        width: 50%;
-        flex: 1;
-        height: 100px;
-    }*/
-
-
     .container2 {
         flex: 1 1 50%;
         box-sizing: border-box;
@@ -407,16 +433,13 @@ font-size: 20px;
         text-align: center;
     }
     #text-ganz {
-        flex: 1 1 100%; /* Nimmt die gesamte Breite ein */
+        flex: 1 1 100%; 
+    }
     
-    }
-    #text-info {
-       
-    }
     #text-bild {
-    
         border-radius: 18px;
     }
+
     #text-ganz p {
         font-size: 10px;
         hyphens: auto; 
@@ -428,6 +451,12 @@ font-size: 20px;
     #text-bild img {
         width: 100%;
         border-radius: 18px;
+        filter: grayscale(100%);
+        cursor: pointer;
+        transition: 1s;
+    }
+    #text-bild img:hover {
+        filter: grayscale(0%);
     }
 
     #text-info h1 {
@@ -441,10 +470,10 @@ font-size: 20px;
         font-size: 25px;
         margin-left: 60px;
         color: #fff;
-
     }
     #text-ganz p {
         font-size: 20px;
         margin-left: 60px;
-   
+        line-height: 40px;
     }
+    
