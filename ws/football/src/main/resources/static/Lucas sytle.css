@@ -357,6 +357,12 @@ font-size: 20px;
     cursor: pointer;
 }
 
+.newsletter-right button:hover,
+.newsletter-right button:focus {
+    cursor: pointer;
+    color: black;
+}
+
 .footer {
     position: relative;
     width: 100%;
