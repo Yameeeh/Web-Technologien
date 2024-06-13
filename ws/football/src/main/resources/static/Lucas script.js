@@ -34,4 +34,18 @@ document.addEventListener('DOMContentLoaded', (event) => {
             privacyModal.style.display = "none";
         }
     }
+
+    // EmailJS functionality
+document.getElementById('newsletter-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    emailjs.sendForm('service_t168566', 'template_xw7r9tu', this)
+        .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            alert('Vielen Dank für die Anmeldung zum Newsletter!');
+        }, function(error) {
+            console.log('FAILED...', error);
+            alert('Es gab ein Problem bei der Anmeldung. Bitte versuchen Sie es später erneut.');
+        });
+    });
 });
