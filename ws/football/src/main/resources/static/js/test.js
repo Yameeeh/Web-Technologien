@@ -173,7 +173,7 @@ async function postComment() {
 			throw new Error('Network response was not ok ' + response.statusText);
 		}
 
-		const result = await response.json();
+		const result = await response.text();
 		console.log('Erfolgreich gepostet:', result);
 		alert('Kommentar und Bild wurden erfolgreich gepostet!');
 		// Hier könntest du den Kommentar und das Bild auf der Seite anzeigen
@@ -185,8 +185,3 @@ async function postComment() {
 
 // Event Listener für den Post-Button per ID
 document.getElementById('postButton').addEventListener('click', postComment);
-
-const response = await fetch('http://localhost:8080/api/comments', {
-    method: 'POST',
-    body: formData
-});

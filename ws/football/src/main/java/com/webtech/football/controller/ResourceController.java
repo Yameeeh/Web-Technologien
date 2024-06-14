@@ -22,6 +22,11 @@ public class ResourceController {
 		return "forum";
 	}
 
+	@GetMapping("/ergebnisse")
+	public String ergebnisseEndpoint() {
+		return "ergebnisse";
+	}
+
 	@GetMapping("/admin")
 	public String adminEndpoint() {
 		return "Admin";
@@ -37,8 +42,14 @@ public class ResourceController {
 		return "All Roles";
 	}
 
+	@GetMapping("/api/comments")
+	public String commentsEndpoint() {
+		return "test";
+	}
+
 	@DeleteMapping("/delete")
 	public String deleteEndpoint(@RequestBody String s) {
 		return "I am deleting " + s;
 	}
+
 }

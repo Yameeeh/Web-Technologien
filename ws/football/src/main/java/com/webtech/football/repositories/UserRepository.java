@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.webtech.football.entities.User;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, String> {
 
 	// Custom query method to find a user by username
 	User findByUsername(String username);
