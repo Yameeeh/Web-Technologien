@@ -25,7 +25,6 @@ public class UserService {
 			throw new IllegalArgumentException("Username is already taken.");
 		}
 
-		// Encode the password before saving
 		String encodedPassword = passwordEncoder.encode(password);
 
 		// Create a new user entity
@@ -33,7 +32,6 @@ public class UserService {
 		user.setUsername(username);
 		user.setPassword(encodedPassword);
 
-		// Save the user in the database
 		return userRepository.save(user);
 	}
 

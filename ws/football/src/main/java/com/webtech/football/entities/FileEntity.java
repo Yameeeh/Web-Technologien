@@ -1,7 +1,5 @@
 package com.webtech.football.entities;
 
-import java.time.LocalDate;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,27 +9,28 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 
 @Entity
-@Table(name = "comment")
+@Table(name = "file")
 @Data
 @NoArgsConstructor
-public class Comment {
+public class FileEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
 	private Long id;
 
-	@JoinColumn(name = "USER_ID", nullable = false)
-	private String userID;
+	@Column(name = "Name")
+	private String fileName;
 
-	@NonNull
-	@Column(name = "TEXT", nullable = false)
-	private String text;
+	@Column(name = "Type")
+	private String fileType;
 
-	@NonNull
-	@Column(name = "TIME", nullable = false)
-	private LocalDate time;
+	@Column(name = "Path") // Neues Feld für den Dateipfad
+	private String filePath;
+
+	@JoinColumn(name = "COMMENT_ID", nullable = false)
+	private long commentID;
+
 }

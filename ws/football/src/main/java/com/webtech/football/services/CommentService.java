@@ -1,31 +1,29 @@
 package com.webtech.football.services;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.webtech.football.entities.Comment;
-import com.webtech.football.entities.User;
+import com.webtech.football.repositories.CommentRepository;
 
 @Service
 public class CommentService {
 
-	private List<Comment> comments = new ArrayList<Comment>(
-			Arrays.asList(new Comment(1l, new User(), "ein Testkomentar", LocalDate.now())));
+	@Autowired
+	private CommentRepository commentRepository;
 
-	public List<Comment> getAllComments() {
-		return comments;
+	public Comment addComment(String text, String userID) {
+		Comment comment = new Comment();
+		comment.setText(text);
+		comment.setTime(LocalDate.now());
+		comment.setUserID(userID);
+		return commentRepository.save(comment);
 	}
 
-	public Comment getComment(Long id) {
-		return comments.stream().filter(t -> t.getId().equals(id)).findFirst().get();
-	}
-
-	public void addComment(Comment comment) {
-		comments.add(comment);
+	public Comment saveComment(Comment comment) {
+		return commentRepository.save(comment);
 	}
 
 }
