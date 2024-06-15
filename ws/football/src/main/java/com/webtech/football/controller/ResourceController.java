@@ -44,7 +44,7 @@ public class ResourceController {
 
 	@GetMapping("/api/comments")
 	public String commentsEndpoint() {
-		return "test";
+		return "forum";
 	}
 
 	@DeleteMapping("/delete")

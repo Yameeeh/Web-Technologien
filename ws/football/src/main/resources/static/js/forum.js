@@ -146,8 +146,7 @@ document.getElementById('uploadButton').addEventListener('click', function() {
 // Event-Handling für das Ändern der Datei registrieren
 document.getElementById('fileInput').addEventListener('change', handleFileChange);
 
-// Test Daten an Backend schicken
-function postComment() {
+async function postComment() {
     const comment = document.getElementById('userComment').value;
     const fileInput = document.getElementById('fileInput');
     const file = fileInput.files[0];
@@ -166,18 +165,27 @@ function postComment() {
     formData.append('comment', comment);
     formData.append('image', file);
 
-    // Log the FormData values to check before sending
-    console.log('Comment:', comment);
-    if (file) {
-        console.log('File Name:', file.name);
-        console.log('File Size:', file.size);
-        console.log('File Type:', file.type);
-    }
+    try {
+        const response = await fetch('http://localhost:8080/api/comments', {
+            method: 'POST',
+            body: formData
+        });
 
-    // Simulate sending data without actual fetch call
-    console.log('FormData ready to be sent');
-    alert('Kommentar und Bild wurden erfolgreich simuliert gesendet!');
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+
+        const result = await response.text();
+        console.log('Erfolgreich gepostet:', result);
+        alert('Kommentar und Bild wurden erfolgreich gepostet!');
+        // Hier könntest du den Kommentar und das Bild auf der Seite anzeigen
+    } catch (error) {
+        console.error('Es gab ein Problem mit der Anfrage:', error);
+        alert('Es gab ein Problem beim Posten des Kommentars und Bildes.');
+    }
 }
+
+
 
 
 // Daten aus dem Backend laden 
