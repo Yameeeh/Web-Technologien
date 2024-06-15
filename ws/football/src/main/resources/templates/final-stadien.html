@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="final-stadien.css">
+</head>
+<body>
+    <header class="header" id="header">
+        <a href="index.html"><img src="assets/Logo.png" class="logo"></a>
+        <input type="checkbox" id="check">
+        <label for="check" class="menu">
+            <i class="bx bx-menu" id="icon-menu"></i>
+            <i class="bx bx-x" id="close-menu"></i>
+        </label>    
+        <nav class="navbar" id="navbar">
+            <a href="index.html">Startseite</a>
+            <a href="stadien.html">Euro 2024</a>
+            <a href="#">Ergebnisse</a>
+            <a href="forum.html">Forum</a>
+            <a href="login.html">Login</a>
+        </nav>
+        </header>
+   <div class="slider">
+    <div class="myslider fade" style="display: block;">
+        <div class="text">
+            <div class="blau">
+                <span>Olympiastadion</span>
+                <h2>Berlin</h2>
+                <a href="#berlin" class="button">Erfahre mehr</a>
+        </div>
+        </div>
+        <img src="assets/olympiastadion2.jpeg" class="image">
+    </div>
+    <div class="myslider fade">
+        <div class="text">
+            <div class="rot">
+                <span>Allianz Arena</span>
+                <h2>München</h2>
+                <a href="#bayern" class="button">Erfahre mehr</a>
+            </div>
+        </div>
+        <img src="assets\stadion-bayern.png" class="image">
+    </div>
+    <div class="myslider fade">
+        <div class="text">
+            <div class="gelb">
+                <span>Signal Iduna Park</span>
+                <h2>Dortmund</h2>
+                <a href="#dortmund" class="button">Erfahre mehr</a>
+            </div>
+        </div>
+        <img src="assets\stadion-dortmund.jpg" class="image">
+    </div>
+    <div class="myslider fade">
+        <div class="text">
+            <div class="blau">
+                <span>Volksparkstadium</span>
+                <h2>Hamburg</h2>
+                <a href="#hamburg" class="button">Erfahre mehr</a>
+            </div>
+        </div>
+        <img src="assets\stadion-hsv.jpg" class="image">
+    </div>
+    <div class="myslider fade">
+        <div class="text">
+            <div class="schwarz">
+                <span>Deutsche Bank Park</span>
+                <h2>Frankfurt</h2>
+                <a href="#frankfurt" class="button">Erfahre mehr</a>
+            </div>
+        </div>
+        <img src="assets\stadion-frankfurt.jpg" class="image">
+    </div>
+    <div class="myslider fade">
+        <div class="text">
+            <div class="blau">
+                <span>Veltins-Arena</span>
+                <h2>Gelsenkirchen</h2>
+                <a href="#gelsenkirchen" class="button">Erfahre mehr</a>
+            </div>
+        </div>
+        <img src="assets\stadion-gelsenkirchen.png" class="image">
+    </div>
+    <div class="myslider fade">
+        <div class="text">
+            <div class="rot">
+                <span>Red Bull Arena</span>
+                <h2>Leipzig</h2>
+                <a href="#leipzig" class="button">Erfahre mehr</a>
+            </div>
+        </div>
+        <img src="assets\stadion-leipzig.jpeg" class="image">
+    </div>
+    <div class="myslider fade">
+        <div class="text">
+            <div class="rot">
+                <span>Merkur Spiel-Arena</span>
+                <h2>Düsseldorf</h2>
+                <a href="#düsseldorf" class="button">Erfahre mehr</a>
+        </div>
+        </div>
+        <img src="assets\stadion-dusseldorf2.jpg" class="image">
+    </div>
+    <div class="myslider fade">
+        <div class="text">
+            <div class="rot">
+                <span>Rheinenergiestadion</span>
+                <h2>Köln</h2>
+                <a href="#köln" class="button">Erfahre mehr</a>
+        </div>
+        </div>
+        <img src="assets\stadion-koeln.jpg" class="image">
+    </div>
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    <div class="dotsbox" style="text-align: center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+        <span class="dot" onclick="currentSlide(5)"></span>
+        <span class="dot" onclick="currentSlide(6)"></span>
+        <span class="dot" onclick="currentSlide(7)"></span>
+        <span class="dot" onclick="currentSlide(8)"></span>
+        <span class="dot" onclick="currentSlide(9)"></span>
+    </div>
+   </div>
+
+    <!-- Infokasten Berlin -->
+   <div class="container" id="berlin" >
+        <div class="main-container" id="blue">
+
+            <div class="container2" id="text-info">
+                <h1>Olympiastadion</h1>
+                <p><br>Verein: Hertha BSC<br><br>
+                    Stadt: Berlin<br><br>
+                    Kapazität: 74.475<br><br>
+                    Eröffnung: 1936<br><br>
+                    Spiele: <button onclick="togglePopup1()" id="button-games">Alle Anzeigen</button></p>
+                    <div class="popup" id="popup-1">
+                        <div class="overlay"></div>
+                        <div class="content" id="content">
+                            <div class="close-btn" onclick="togglePopup1()">&times;</div>
+                            <h3>Im Olympiastadion Berlin werden 6 Spiele ausgetragen:</h3>
+                            <p>⚽ 15. Juni 2024 um 18:00 Uhr: Spanien v Kroatien (Tore öffnen um 15:00 Uhr)<br>
+                                ⚽ 21. Juni 2024 um 18:00 Uhr: Polen v Österreich (Tore öffnen um 15:00 Uhr)<br>
+                                ⚽ 25. Juni 2024 um 18:00 Uhr: Niederlande v Österreich (Tore öffnen um 15:00 Uhr)<br>
+                                ⚽ 29. Juni 2024 um 18:00 Uhr: Achtelfinale (Tore öffnen um 15:00 Uhr)<br>
+                                ⚽ 06. Juli 2024 um 21:00 Uhr: Viertelfinale (Tore öffnen um 18:00 Uhr)<br>
+                                ⚽ 14. Juli 2024 um 21:00 Uhr: Finale (Tore öffnen um 18:00 Uhr)</p>
+                        </div>
+                     </div>
+            </div>
+
+            <div class="container2" id="text-bild">
+                <img src="assets/berlin-stadion-außen.webp">
+            </div>
+
+            <div class="container2" id="text-maps">
+                <gmp-map class="map"
+                    center="52.51472387588363, 13.23954918395142"
+                    zoom="15"
+                    map-id="DEMO_MAP_ID"
+                    >
+                    <gmp-advanced-marker
+                        position="52.51472387588363, 13.23954918395142"
+                        title="Olympiastadion, Berlin"
+                    ></gmp-advanced-marker>       
+                </gmp-map>
+            </div>
+
+            <div class="container2" id="text-ganz">
+                <p>Das Olympiastadion in Berlin, erbaut für die Olympischen Spiele 1936, ist heute eine der bekanntesten Sportstätten Deutschlands. Im Bezirk Charlottenburg-Wilmersdorf gelegen, wurde es zwischen 2000 und 2004 umfassend modernisiert. Mit einer Kapazität von rund 74.475 Zuschauern und modernen Einrichtungen bietet es Platz für Heimspiele von Hertha BSC, das jährliche DFB-Pokal-Finale, Leichtathletikveranstaltungen und große Konzerte. Das Stadion, im Besitz des Landes Berlin und betrieben von der Olympiastadion Berlin GmbH, war auch Austragungsort des WM-Finales 2006 und des UEFA Champions League Finales 2015. Ein bedeutendes DFB-Länderspiel fand am 22. März 2018 statt, als Deutschland gegen Brasilien mit 0:1 verlor.</p>
+
+            </div>
+        </div>
+
+        <div class="abgrenzung"></div>
+    </div>
+
+    <!-- Infokasten München -->
+    <div class="container" id="bayern">
+        <div class="main-container" id="red" >
+
+            <div class="container2" id="text-info">
+                <h1>Allianz Arena</h1>
+                <p><br>Verein: FC Bayern München<br><br>
+                    Stadt: München<br><br>
+                    Kapazität: 75.000<br><br>
+                    Eröffnung: 2005<br><br>
+                    Spiele: <button onclick="togglePopup2()" id="button-games">Alle Anzeigen</button></p>
+                    <div class="popup" id="popup-2">
+                        <div class="overlay"></div>
+                        <div class="content" id="content">
+                            <div class="close-btn" onclick="togglePopup2()">&times;</div>
+                            <h3>In der Allianz Arena München werden 6 Spiele ausgetragen:</h3>
+                            <p>⚽ 14. Juni 2024 um 21:00 Uhr: Deutschland v Schottland (Tore öffnen um 18:00 Uhr)<br>
+                                ⚽ 17. Juni 2024 um 15:00 Uhr: Rumänien v Ukraine (Tore öffnen um 12:00 Uhr)<br>
+                                ⚽ 20. Juni 2024 um 15:00 Uhr: Slovenien v Serbien (Tore öffnen um 12:00 Uhr)<br>
+                                ⚽ 25. Juni 2024 um 21:00 Uhr: Dänemark v Serbien (Tore öffnen um 18:00 Uhr)<br>
+                                ⚽ 02. Juli 2024 um 18:00 Uhr: Achtelfinale (Tore öffnen um 15:00 Uhr)<br>
+                                ⚽ 09. Juli 2024 um 21:00 Uhr: Halbfinale (Tore öffnen um 18:00 Uhr)</p>
+                        </div>
+                     </div>
+            </div>
+
+            <div class="container2" id="text-bild">
+                <img src="assets/bayern-stadion-außen.jpeg">
+            </div>
+
+            <div class="container2" id="text-maps">
+                <gmp-map class="map"
+                    center="48.21883382346077, 11.62469852370559"
+                    zoom="15"
+                    map-id="DEMO_MAP_ID"
+                    >
+                    <gmp-advanced-marker
+                        position="48.21883382346077, 11.62469852370559"
+                        title="Allianz Arena, München"
+                    ></gmp-advanced-marker>       
+                </gmp-map>
+            </div>
+
+            <div class="container2" id="text-ganz">
+                <p>Die Allianz Arena, eröffnet am 30. Mai 2005, ist das beeindruckende Heimstadion des FC Bayern München und befindet sich im Münchner Stadtteil Fröttmaning. Mit einer Kapazität von etwa 75.000 Zuschauern bei Bundesliga-Spielen und 70.000 bei internationalen Spielen bietet sie Platz für eine große Anzahl von Fans. Ihre markante Architektur mit einer Außenhülle aus beleuchtbaren ETFE-Folienkissen ermöglicht es, die Arena in verschiedenen Farben erstrahlen zu lassen, was sie zu einem der auffälligsten Stadien weltweit macht. Neben den Spielen des FC Bayern München werden in der Arena auch große Veranstaltungen wie Konzerte und Länderspiele ausgerichtet. Ein Highlight ihrer Geschichte ist die Ausrichtung des Eröffnungsspiels der Fußball-Weltmeisterschaft 2006.</p>
+
+            </div>
+        </div>
+        
+        <div class="abgrenzung"></div>
+    </div>
+
+    <!-- Infokasten Dortmund -->
+    <div class="container" id="dortmund">
+        <div class="main-container" id="yellow">
+
+            <div class="container2" id="text-info">
+                <h1>Signal Iduna Park</h1>
+                <p><br>Borussia Dortmund<br><br>
+                    Stadt: Dortmund<br><br>
+                    Kapazität: 81.000<br><br>
+                    Eröffnung: 1974<br><br>
+                    Spiele: <button onclick="togglePopup3()" id="button-games">Alle Anzeigen</button></p>
+                    <div class="popup" id="popup-3">
+                        <div class="overlay"></div>
+                        <div class="content" id="content">
+                            <div class="close-btn" onclick="togglePopup3()">&times;</div>
+                            <h3>Im Signal Iduna Park Dortmund werden 6 Spiele ausgetragen:</h3>
+                            <p>⚽ 15. Juni 2024 um 21:00 Uhr: Italien v Albanien (Tore öffnen um 18:00 Uhr)<br>
+                                ⚽ 18. Juni 2024 um 18:00 Uhr: Türkei v Georgien (Tore öffnen um 15:00 Uhr)<br>
+                                ⚽ 22. Juni 2024 um 18:00 Uhr: Türkei v Portugal (Tore öffnen um 15:00 Uhr)<br>
+                                ⚽ 25. Juni 2024 um 18:00 Uhr: Frankreich v Polen (Tore öffnen um 15:00 Uhr)<br>
+                                ⚽ 29. Juni 2024 um 21:00 Uhr: Achtelfinale (Tore öffnen um 18:00 Uhr)<br>
+                                ⚽ 10. Juli 2024 um 21:00 Uhr: Halbfinale (Tore öffnen um 18:00 Uhr)</p>
+                        </div>
+                     </div>
+            </div>
+
+            <div class="container2" id="text-bild">
+                <img src="assets/dortmund-stadion-außen.jpg">
+            </div>
+
+            <div class="container2" id="text-maps">
+                <gmp-map class="map"
+                    center="51.492661324767326, 7.451855922133075"
+                    zoom="15"
+                    map-id="DEMO_MAP_ID"
+                    >
+                    <gmp-advanced-marker
+                        position="51.492661324767326, 7.451855922133075"
+                        title="Signal Iduna Park, Dortmund"
+                    ></gmp-advanced-marker>       
+                </gmp-map>
+            </div>
+
+            <div class="container2" id="text-ganz">
+                <p>Der Signal Iduna Park, auch bekannt als Westfalenstadion, wurde 1974 eröffnet und ist die Heimat von Borussia Dortmund. Mit einer Kapazität von über 81.000 Plätzen ist es das größte Stadion Deutschlands. Besonders berühmt ist die "Gelbe Wand" auf der Südtribüne, die größte Stehplatztribüne Europas, die für eine einzigartige und beeindruckende Atmosphäre sorgt. Die moderne Infrastruktur und die traditionsreiche Geschichte machen den Signal Iduna Park zu einem der bedeutendsten Fußballstadien der Welt. Ein denkwürdiges Länderspiel fand am 4. März 2009 hier statt, als Deutschland gegen Italien spielte und das Spiel mit einem 1:1-Unentschieden endete.</p>
+
+            </div>
+        </div>
+        
+        <div class="abgrenzung"></div>
+    </div>
+
+    <!-- Infokasten Hamburg -->
+    <div class="container" id="hamburg">
+        <div class="main-container" id="blue">
+
+            <div class="container2" id="text-info">
+                <h1>Volksparkstadion</h1>
+                <p><br>Verein: Hamburger SV<br><br>
+                    Stadt: Hamburg<br><br>
+                    Kapazität: 57.000<br><br>
+                    Eröffnung: 1953<br><br>
+                    Spiele: <button onclick="togglePopup4()" id="button-games">Alle Anzeigen</button></p>
+                    <div class="popup" id="popup-4">
+                        <div class="overlay"></div>
+                        <div class="content" id="content">
+                            <div class="close-btn" onclick="togglePopup4()">&times;</div>
+                            <h3>Im Volksparkstadion Hamburg werden 5 Spiele ausgetragen:</h3>
+                            <p>⚽ 16. Juni 2024 um 15:00 Uhr: Polen v Niederlande (Tore öffnen um 12:00 Uhr)<br>
+                                ⚽ 19. Juni 2024 um 15:00 Uhr: Kroatien v Albanien (Tore öffnen um 12:00 Uhr)<br>
+                                ⚽ 22. Juni 2024 um 15:00 Uhr: Georgien v Tschechien (Tore öffnen um 12:00 Uhr)<br>
+                                ⚽ 26. Juni 2024 um 21:00 Uhr: Tschechien v Türkei (Tore öffnen um 18:00 Uhr)<br>
+                                ⚽ 05. Juli 2024 um 21:00 Uhr: Viertelfinale (Tore öffnen um 18:00 Uhr)</p>
+                        </div>
+                     </div>
+            </div>
+
+            <div class="container2" id="text-bild">
+                <img src="assets/hamburg-stadion-außen.jpg">
+            </div>
+
+            <div class="container2" id="text-maps">
+                <gmp-map class="map"
+                    center="53.58729441335615, 9.898560295648902"
+                    zoom="15"
+                    map-id="DEMO_MAP_ID"
+                    >
+                    <gmp-advanced-marker
+                        position="53.58729441335615, 9.898560295648902"
+                        title="Volksparkstadion, Hamburg"
+                    ></gmp-advanced-marker>       
+                </gmp-map>
+            </div>
+
+            <div class="container2" id="text-ganz">
+                <p>Das Volksparkstadion in Hamburg wurde 1953 eröffnet und seither mehrfach modernisiert. Es bietet Platz für über 57.000 Zuschauer und ist die Heimat des Hamburger SV. Das Stadion ist bekannt für seine markanten Dächer und seine großartige Akustik, die eine leidenschaftliche Atmosphäre schafft. Es dient nicht nur als Fußballstadion, sondern auch als Veranstaltungsort für Konzerte und andere Großereignisse. Am 2. September 2011 war das Volksparkstadion Schauplatz des EM-Qualifikationsspiels Deutschland gegen Österreich, bei dem Deutschland mit 6:2 siegte.
+
+            </div>
+        </div>
+        
+        <div class="abgrenzung"></div>
+    </div>
+
+        <!-- Infokasten Frankfurt -->
+        <div class="container" id="frankfurt">
+            <div class="main-container" id="black">
+    
+                <div class="container2" id="text-info">
+                    <h1>Deutsche Bank Park</h1>
+                    <p><br>Verein: Eintracht Frankfurt<br><br>
+                        Stadt: Frankfurt<br><br>
+                        Kapazität: 51.500<br><br>
+                        Eröffnung: 1925<br><br>
+                        Spiele: <button onclick="togglePopup5()" id="button-games">Alle Anzeigen</button></p>
+                        <div class="popup" id="popup-5">
+                            <div class="overlay"></div>
+                            <div class="content" id="content">
+                                <div class="close-btn" onclick="togglePopup5()">&times;</div>
+                                <h3>Im Deutsche Bank Park Frankfurt werden 5 Spiele ausgetragen:</h3>
+                                <p>⚽ 17. Juni 2024 um 18:00 Uhr: Belgien v Slovenien (Tore öffnen um 15:00 Uhr)<br>
+                                    ⚽ 20. Juni 2024 um 18:00 Uhr: Dänemark v England (Tore öffnen um 15:00 Uhr)<br>
+                                    ⚽ 23. Juni 2024 um 21:00 Uhr: Schweiz v Deutschland (Tore öffnen um 18:00 Uhr)<br>
+                                    ⚽ 26. Juni 2024 um 18:00 Uhr: Slovenien v Rumänien (Tore öffnen um 15:00 Uhr)<br>
+                                    ⚽ 01. Juli 2024 um 21:00 Uhr: Achtelfinale (Tore öffnen um 18:00 Uhr)</p>
+                            </div>
+                         </div>
+                </div>
+    
+                <div class="container2" id="text-bild">
+                    <img src="assets/frankfurt-stadion-außen.jpg">
+                </div>
+    
+                <div class="container2" id="text-maps">
+                    <gmp-map class="map"
+                        center="50.06870683248173, 8.645506348278383"
+                        zoom="15"
+                        map-id="DEMO_MAP_ID"
+                        >
+                        <gmp-advanced-marker
+                            position="50.06870683248173, 8.645506348278383"
+                            title="Deutsche Bank Park, Frankfurt"
+                        ></gmp-advanced-marker>       
+                    </gmp-map>
+                </div>
+    
+                <div class="container2" id="text-ganz">
+                    <p>Der Deutsche Bank Park in Frankfurt am Main ist die Heimat von Eintracht Frankfurt und ein wichtiger Austragungsort für Sport- und Kulturveranstaltungen. Eröffnet 1925 und zuletzt umfassend zwischen 2002 und 2005 modernisiert, bietet das Stadion Platz für etwa 51.500 Zuschauer bei Bundesliga-Spielen. Es verfügt über moderne Technik, VIP-Logen und umfangreiche gastronomische Angebote. Das Stadion, im Besitz der Stadt Frankfurt und betrieben von der Stadion Frankfurt Management GmbH, war ein wichtiger Austragungsort der FIFA-Weltmeisterschaft 2006 und wird auch bei der Fußball-Europameisterschaft 2024 genutzt. Ein bedeutendes DFB-Länderspiel fand am 9. Oktober 2019 statt, als Deutschland gegen Argentinien 2:2 unentschieden spielte.</p>
+    
+                </div>
+            </div>
+            
+            <div class="abgrenzung"></div>
+        </div>
+
+        <!-- Infokasten Gelsenkirchen -->
+        <div class="container" id="gelsenkirchen">
+            <div class="main-container" id="blue">
+    
+                <div class="container2" id="text-info">
+                    <h1>Veltins-Arena</h1>
+                    <p><br>Verein: FC Schalke 04<br><br>
+                        Stadt: Gelsenkrichen<br><br>
+                        Kapazität: 62.000<br><br>
+                        Eröffnung: 2001<br><br>
+                        Spiele: <button onclick="togglePopup6()" id="button-games">Alle Anzeigen</button></p>
+                        <div class="popup" id="popup-6">
+                            <div class="overlay"></div>
+                            <div class="content" id="content">
+                                <div class="close-btn" onclick="togglePopup6()">&times;</div>
+                                <h3>In der Veltins-Arena Gelsenkirchen werden 4 Spiele ausgetragen:</h3>
+                                <p>⚽ 16. Juni 2024 um 21:00 Uhr: Serbien v England (Tore öffnen um 18:00 Uhr)<br>
+                                    ⚽ 20. Juni 2024 um 21:00 Uhr: Spanien v Italien (Tore öffnen um 18:00 Uhr)<br>
+                                    ⚽ 26. Juni 2024 um 21:00 Uhr: Georgien v Portugal (Tore öffnen um 18:00 Uhr)<br>
+                                    ⚽ 30. Juni 2024 um 18:00 Uhr: Achtelfinale (Tore öffnen um 15:00 Uhr)</p>
+                            </div>
+                         </div>
+                </div>
+    
+                <div class="container2" id="text-bild">
+                    <img src="assets/gelsenkirchen-stadion-außen.jpg">
+                </div>
+    
+                <div class="container2" id="text-maps">
+                    <gmp-map class="map"
+                        center="51.554703450437835, 7.067575822326953"
+                        zoom="15"
+                        map-id="DEMO_MAP_ID"
+                        >
+                        <gmp-advanced-marker
+                            position="51.554703450437835, 7.067575822326953"
+                            title="Veltins-Arena, Frankfurt"
+                        ></gmp-advanced-marker>       
+                    </gmp-map>
+                </div>
+    
+                <div class="container2" id="text-ganz">
+                    <p>Die Veltins-Arena, eröffnet 2001, ist das Zuhause des FC Schalke 04 und bietet Platz für über 62.000 Zuschauer. Mit ihrem einziehbaren Dach und Rasen gehört sie zu den modernsten Arenen Europas. Sie ist nicht nur für Fußballspiele, sondern auch für zahlreiche andere Veranstaltungen wie Konzerte und Eishockeyspiele bekannt. Ein historisches Ereignis war das WM-Halbfinale am 4. Juli 2006 zwischen Deutschland und Italien, das in der Verlängerung mit 0:2 endete.
+    
+                </div>
+            </div>
+            
+            <div class="abgrenzung"></div>
+    </div>
+
+    <!-- Infokasten Leipzig -->
+    <div class="container" id="leipzig">
+        <div class="main-container" id="red">
+
+            <div class="container2" id="text-info">
+                <h1>Red Bull Arena</h1>
+                <p><br>Verein: RB Leipzig<br><br>
+                    Stadt: Leipzig<br><br>
+                    Kapazität: 42.000<br><br>
+                    Eröffnung: 2004<br><br>
+                    Spiele: <button onclick="togglePopup7()" id="button-games">Alle Anzeigen</button></p>
+                    <div class="popup" id="popup-7">
+                        <div class="overlay"></div>
+                        <div class="content" id="content">
+                            <div class="close-btn" onclick="togglePopup7()">&times;</div>
+                            <h3>In der Red Bull Arena Leipzig werden 4 Spiele ausgetragen:</h3>
+                            <p>⚽ 18. Juni 2024 um 21:00 Uhr: Portugal v Tschechien (Tore öffnen um 18:00 Uhr)<br>
+                                ⚽ 21. Juni 2024 um 21:00 Uhr: Niederlande v Frankreich (Tore öffnen um 18:00 Uhr)<br>
+                                ⚽ 24. Juni 2024 um 21:00 Uhr: Kroatien v Italien (Tore öffnen um 18:00 Uhr)<br>
+                                ⚽ 02. Juli 2024 um 21:00 Uhr: Achtelfinale (Tore öffnen um 18:00 Uhr)</p>
+                        </div>
+                     </div>
+            </div>
+
+            <div class="container2" id="text-bild">
+                <img src="assets/leipzig-stadion-außen.jpg">
+            </div>
+
+            <div class="container2" id="text-maps">
+                <gmp-map class="map"
+                    center="51.34592973030416, 12.348343986042709"
+                    zoom="15"
+                    map-id="DEMO_MAP_ID"
+                    >
+                    <gmp-advanced-marker
+                        position="51.34592973030416, 12.348343986042709"
+                        title="Red Bull Arena, Leipzig"
+                    ></gmp-advanced-marker>       
+                </gmp-map>
+            </div>
+
+            <div class="container2" id="text-ganz">
+                <p>Die Red Bull Arena in Leipzig wurde 2004 eröffnet und ist die Heimat von RB Leipzig. Sie bietet Platz für über 42.000 Zuschauer und ist bekannt für ihre moderne Architektur und lebhafte Atmosphäre. Die Arena wurde auf den Fundamenten des ehemaligen Zentralstadions errichtet und verbindet Tradition mit Moderne. Am 27. März 2018 fand hier das Freundschaftsspiel Deutschland gegen Brasilien statt, das Deutschland mit 1:0 gewann.</p>
+
+            </div>
+        </div>
+        
+        <div class="abgrenzung"></div>
+    </div>
+
+    <!-- Infokasten Düsseldorf -->
+    <div class="container" id="düsseldorf">
+        <div class="main-container" id="red">
+
+            <div class="container2" id="text-info">
+                <h1>Merkur Spiel-Arena</h1>
+                <p><br>Verein: Fortuna Düsseldorf<br><br>
+                    Stadt: Düsseldorf<br><br>
+                    Kapazität: 54.000<br><br>
+                    Eröffnung: 2004<br><br>
+                    Spiele: <button onclick="togglePopup8()" id="button-games">Alle Anzeigen</button></p>
+                    <div class="popup" id="popup-8">
+                        <div class="overlay"></div>
+                        <div class="content" id="content">
+                            <div class="close-btn" onclick="togglePopup8()">&times;</div>
+                            <h3>In der Merkur Spiel Arena Düsseldorf werden 5 Spiele ausgetragen:</h3>
+                            <p>⚽ 17. Juni 2024 um 21:00 Uhr: Österreich v Frankreich (Tore öffnen um 18:00 Uhr)<br>
+                                ⚽ 21. Juni 2024 um 15:00 Uhr: Slowakei v Ukraine (Tore öffnen um 12:00 Uhr)<br>
+                                ⚽ 24. Juni 2024 um 21:00 Uhr: Albanien v Italien (Tore öffnen um 18:00 Uhr)<br>
+                                ⚽ 01. Juli 2024 um 18:00 Uhr: Achtelfinale (Tore öffnen um 15:00 Uhr)<br>
+                                ⚽ 06. Juli 2024 um 18:00 Uhr: Viertelfinale (Tore öffnen um 15:00 Uhr)</p>
+                        </div>
+                     </div>
+            </div>
+
+            <div class="container2" id="text-bild">
+                <img src="assets/düsseldorf-stadion-außen.jpg">
+            </div>
+
+            <div class="container2" id="text-maps">
+                <gmp-map class="map"
+                    center="51.26190055446488, 6.733913102590663"
+                    zoom="15"
+                    map-id="DEMO_MAP_ID"
+                    >
+                    <gmp-advanced-marker
+                        position="51.26190055446488, 6.733913102590663"
+                        title="Merkur Spiel Arena, Düsseldorf"
+                    ></gmp-advanced-marker>       
+                </gmp-map>
+            </div>
+
+            <div class="container2" id="text-ganz">
+                <p>Die Merkur Spiel-Arena in Düsseldorf wurde 2004 eröffnet und ist die Heimat von Fortuna Düsseldorf. Mit einer Kapazität von über 54.000 Zuschauern und einem schließbaren Dach bietet sie hervorragende Bedingungen für eine Vielzahl von Veranstaltungen. Das Stadion ist nicht nur für Fußballspiele, sondern auch für Konzerte und andere Großveranstaltungen bekannt. Am 9. Oktober 2019 fand hier das Freundschaftsspiel Deutschland gegen Argentinien statt, das mit einem spannenden 2:2-Unentschieden endete.</p>
+
+            </div>
+        </div>
+        
+        <div class="abgrenzung"></div>
+    </div>
+
+    <!-- Infokasten Köln -->
+    <div class="container" id="köln">
+        <div class="main-container" id="red">
+
+            <div class="container2" id="text-info">
+                <h1>RheinEnergieStadion</h1>
+                <p><br>Verein: 1. FC Köln<br><br>
+                    Stadt: Köln<br><br>
+                    Kapazität: 49.000<br><br>
+                    Eröffnung: 1923<br><br>
+                    Spiele: <button onclick="togglePopup9()" id="button-games">Alle Anzeigen</button></p>
+                    <div class="popup" id="popup-9">
+                        <div class="overlay"></div>
+                        <div class="content" id="content">
+                            <div class="close-btn" onclick="togglePopup9()">&times;</div>
+                            <h3>Im Rheinenergiestadion Köln werden 5 Spiele ausgetragen:</h3>
+                            <p>⚽ 15. Juni 2024 um 15:00 Uhr: Ungarn v Schweiz (Tore öffnen um 12:00 Uhr)<br>
+                                ⚽ 19. Juni 2024 um 21:00 Uhr: Schottland v Schweiz (Tore öffnen um 18:00 Uhr)<br>
+                                ⚽ 22. Juni 2024 um 21:00 Uhr: Belgien v Rumänien (Tore öffnen um 18:00 Uhr)<br>
+                                ⚽ 25. Juni 2024 um 21:00 Uhr: England v Slovenien (Tore öffnen um 18:00 Uhr)<br>
+                                ⚽ 30. Juni 2024 um 21:00 Uhr: Achtelfinale (Tore öffnen um 18:00 Uhr)</p>
+                        </div>
+                     </div>
+            </div>
+
+            <div class="container2" id="text-bild">
+                <img src="assets/köln-stadion-außen.jpg">
+            </div>
+
+            <div class="container2" id="text-maps">
+                <gmp-map class="map"
+                    center="50.93352156018757, 6.875165029350807"
+                    zoom="15"
+                    map-id="DEMO_MAP_ID"
+                    >
+                    <gmp-advanced-marker
+                        position="50.93352156018757, 6.875165029350807"
+                        title="Rheinenergiestadion, Köln"
+                    ></gmp-advanced-marker>       
+                </gmp-map>
+            </div>
+
+            <div class="container2" id="text-ganz">
+                <p>Das RheinEnergieStadion in Köln, Heimat des 1. FC Köln, wurde 1923 eröffnet und seither mehrfach modernisiert. Mit einer Kapazität von über 49.000 Zuschauern ist es ein wichtiger Bestandteil der Kölner Sportkultur. Das Stadion ist bekannt für seine traditionsreiche Atmosphäre und die leidenschaftlichen Fans. Am 11. Oktober 2014 war das Stadion Schauplatz des EM-Qualifikationsspiels Deutschland gegen Irland, das mit einem 1:1-Unentschieden endete.</p>
+
+            </div>
+        </div>
+        
+        <div class="abgrenzung"></div>
+    </div>
+
+    
+
+    
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgh-8kfZs-BwEUXp1gyQaQ_eFxr7TtsDQ&callback=initMap&libraries=marker&v=beta"
+    defer>
+</script>
+<script src="final-stadien.js"></script>
+
+</body>
+</html>
