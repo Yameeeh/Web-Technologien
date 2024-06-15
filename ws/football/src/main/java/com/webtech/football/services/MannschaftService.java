@@ -12,7 +12,7 @@ public class MannschaftService {
 	@Autowired
 	private MannschaftRepository mannschaftRepository;
 
-	private Mannschaft saveMannschaft(String name, String gruppe) {
+	public Mannschaft saveMannschaft(String name, String gruppe) {
 		Mannschaft mannschaft = new Mannschaft();
 
 		mannschaft.setName(name);

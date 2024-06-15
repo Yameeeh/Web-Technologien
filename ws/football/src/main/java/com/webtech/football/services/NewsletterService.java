@@ -12,7 +12,7 @@ public class NewsletterService {
 	@Autowired
 	private NewsletterRepository newsletterRepository;
 
-	private NewsletterAdresse saveAdresse(String email) {
+	public NewsletterAdresse saveAdresse(String email) {
 
 		NewsletterAdresse newsletterAdresse = new NewsletterAdresse();
 		newsletterAdresse.setEmail(email);
@@ -20,7 +20,7 @@ public class NewsletterService {
 		return newsletterRepository.save(newsletterAdresse);
 	}
 
-	private void deleteAdresse(String email) {
+	public void deleteAdresse(String email) {
 
 		newsletterRepository.deleteByEmail(email);
 
