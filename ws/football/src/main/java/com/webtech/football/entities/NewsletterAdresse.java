@@ -10,22 +10,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "user")
+@Table(name = "NewsletterListe")
 @Data
 @NoArgsConstructor
-public class User {
+public class NewsletterAdresse {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.UUID)
 	@Column(name = "ID")
-	private String id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
 
-	@Column(name = "USERNAME", unique = true, nullable = false)
-	private String username;
-
-	@Column(name = "PASSWORD", nullable = false)
-	private String password;
-
-	@Column(name = "EMAIL", nullable = false)
+	@Column(name = "EMAIL", nullable = false, unique = true)
 	private String email;
+
 }
