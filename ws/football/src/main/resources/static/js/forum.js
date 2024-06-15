@@ -145,3 +145,59 @@ document.getElementById('uploadButton').addEventListener('click', function() {
 
 // Event-Handling für das Ändern der Datei registrieren
 document.getElementById('fileInput').addEventListener('change', handleFileChange);
+
+// Test Daten an Backend schicken
+function postComment() {
+    const comment = document.getElementById('userComment').value;
+    const fileInput = document.getElementById('fileInput');
+    const file = fileInput.files[0];
+
+    if (!comment) {
+        alert('Bitte geben Sie einen Kommentar ein.');
+        return;
+    }
+
+    if (!file) {
+        alert('Bitte laden Sie ein Bild hoch.');
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append('comment', comment);
+    formData.append('image', file);
+
+    // Log the FormData values to check before sending
+    console.log('Comment:', comment);
+    if (file) {
+        console.log('File Name:', file.name);
+        console.log('File Size:', file.size);
+        console.log('File Type:', file.type);
+    }
+
+    // Simulate sending data without actual fetch call
+    console.log('FormData ready to be sent');
+    alert('Kommentar und Bild wurden erfolgreich simuliert gesendet!');
+}
+
+
+// Daten aus dem Backend laden 
+function loadComments() {
+    fetch('http://localhost:8080/api/comments')
+        .then(response => response.json())
+        .then(comments => {
+            const container = document.getElementById('comment');
+            container.innerHTML = '';
+            comments.forEach(comment => {
+                const commentElement = document.createElement('div');
+                commentElement.className = 'comment-container';
+                commentElement.innerHTML = `
+                    <p>${comment.comment}</p>
+                    ${comment.imagePath ? `<img src="${comment.imagePath}" alt="Comment Image">` : ''}
+                `;
+                container.appendChild(commentElement);
+            });
+        })
+        .catch(error => console.error('Error loading comments:', error));
+}
+
+window.onload = loadComments;
