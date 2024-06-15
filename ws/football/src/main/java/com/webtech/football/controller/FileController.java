@@ -29,7 +29,6 @@ public class FileController {
 		FileEntity fileEntity = fileRepository.findById(fileId)
 				.orElseThrow(() -> new RuntimeException("File not found with id " + fileId));
 
-		// Load file as Resource
 		Resource resource = new FileSystemResource(fileEntity.getFilePath());
 
 		// Try to determine file's content type
@@ -47,4 +46,5 @@ public class FileController {
 
 		return ResponseEntity.ok().contentType(MediaType.parseMediaType(contentType)).body(resource);
 	}
+
 }

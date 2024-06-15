@@ -11,7 +11,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 
 @Entity
 @Table(name = "comment")
@@ -27,12 +26,13 @@ public class Comment {
 	@JoinColumn(name = "USER_ID", nullable = false)
 	private String userID;
 
-	@NonNull
 	@Column(name = "TEXT", nullable = false)
 	private String text;
 
-	@NonNull
 	@Column(name = "TIME", nullable = false)
 	private LocalDate time;
+
+	@Column(name = "topic", nullable = false)
+	private String topic;
 
 }

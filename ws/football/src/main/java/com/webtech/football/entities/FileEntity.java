@@ -27,7 +27,7 @@ public class FileEntity {
 	@Column(name = "Type")
 	private String fileType;
 
-	@Column(name = "Path") // Neues Feld für den Dateipfad
+	@Column(name = "Path")
 	private String filePath;
 
 	@JoinColumn(name = "COMMENT_ID", nullable = false)
