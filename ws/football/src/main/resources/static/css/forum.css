@@ -300,6 +300,9 @@ width: calc(100% - 100px);
 }
 }
 
+
+
+
 .commentsection {
 text-align: center;
 width: 60%;
@@ -308,6 +311,21 @@ background-color: rgb(10, 10, 10);
 border: 1px solid rgba(80, 80, 80, 0.5);
 
 }
+.comment {
+    height: 500px;
+}
+.comment-container {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.comment-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+
 
 .button-18 {
 align-items: center;
@@ -325,10 +343,8 @@ justify-content: center;
 line-height: 20px;
 width: 80%;
 min-height: 50px;
-
 overflow: hidden;
 padding: 0px;
-
 text-align: center;
 touch-action: manipulation;
 transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
