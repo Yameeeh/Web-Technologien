@@ -22,7 +22,7 @@ public class NewsletterService {
 
 	private void deleteAdresse(String email) {
 
-		newsletterRepository.deleteByAdresse(email);
+		newsletterRepository.deleteByEmail(email);
 
 	}
 

@@ -8,8 +8,8 @@ import com.webtech.football.entities.NewsletterAdresse;
 @Repository
 public interface NewsletterRepository extends JpaRepository<NewsletterAdresse, Long> {
 
-	NewsletterAdresse getByAdresse(String email);
+	NewsletterAdresse getByEmail(String email);
 
-	void deleteByAdresse(String email);
+	void deleteByEmail(String email);
 
 }

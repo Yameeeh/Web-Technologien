@@ -9,7 +9,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -33,13 +32,11 @@ public class Ergebniss {
 	@JoinColumn(name = "MANNSCHAFT2_NAME", referencedColumnName = "NAME", nullable = false)
 	private Mannschaft mannschaft2;
 
-	@OneToOne
-	@JoinColumn(name = "MANNSCHAFT1_GRUPPE", referencedColumnName = "NAME", nullable = false)
-	private char gruppe1;
+	@JoinColumn(name = "MANNSCHAFT1_GRUPPE", referencedColumnName = "GRUPPE", nullable = false)
+	private String gruppe1;
 
-	@OneToOne
-	@JoinColumn(name = "MANNSCHAFT2_GRUPPE", referencedColumnName = "NAME", nullable = false)
-	private char gruppe2;
+	@JoinColumn(name = "MANNSCHAFT2_GRUPPE", referencedColumnName = "GRUPPE", nullable = false)
+	private String gruppe2;
 
 	@Column(name = "Tore1")
 	private int tore1;

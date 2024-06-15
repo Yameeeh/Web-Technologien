@@ -23,7 +23,7 @@ public class Mannschaft {
 	@Column(name = "name", nullable = false, unique = true)
 	private String name;
 
-	@Column(name = "gruppe", nullable = false)
-	private char gruppe;
+	@Column(name = "gruppe", nullable = false, length = 1)
+	private String gruppe;
 
 }
