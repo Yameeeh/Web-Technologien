@@ -33,6 +33,6 @@ public class Comment {
 	private LocalDate time;
 
 	@Column(name = "topic", nullable = false)
-	private String topic;
+	private int topic;
 
 }

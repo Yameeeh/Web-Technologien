@@ -21,7 +21,7 @@ public class CommentService {
 	@Autowired
 	private FileRepository fileRepository;
 
-	public Comment addComment(String text, String userID, String topic) {
+	public Comment addComment(String text, String userID, int topic) {
 		Comment comment = new Comment();
 		comment.setText(text);
 		comment.setTime(LocalDate.now());
@@ -38,17 +38,18 @@ public class CommentService {
 		return commentRepository.findAll();
 	}
 
-	public List<Comment> getAllCommentsByTopic(String topic) {
+	public List<Comment> getAllCommentsByTopic(int topic) {
 		return commentRepository.getAllCommentsByTopic(topic);
 	}
 
-	public List<CommentWithFileDTO> getAllCommentsWithFileByTopic(String topic) {
+	public List<CommentWithFileDTO> getAllCommentsWithFileByTopic(int topic) {
 		List<Comment> comments = commentRepository.getAllCommentsByTopic(topic);
 
 		return comments.stream().map(comment -> {
 			FileEntity file = fileRepository.findByCommentID(comment.getId());
+			String fileName = (file != null) ? file.getFileName() : null;
 			return new CommentWithFileDTO(comment.getId(), comment.getUserID(), comment.getText(), comment.getTime(),
-					comment.getTopic(), file);
+					comment.getTopic(), fileName);
 		}).collect(Collectors.toList());
 	}
 }

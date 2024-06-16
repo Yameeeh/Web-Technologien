@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,9 +35,9 @@ public class CommentController {
 
 	@PostMapping
 	public ResponseEntity<String> postComment(@RequestParam("comment") String comment,
-			@RequestParam("image") MultipartFile image) {
+			@RequestParam("image") MultipartFile image, @RequestParam("topicId") int topicID) {
 
-		Comment kommentar = commentService.addComment(comment, "userID", "topic");
+		Comment kommentar = commentService.addComment(comment, "userID", topicID);
 
 		// Save image
 		try {
@@ -52,8 +51,8 @@ public class CommentController {
 		return new ResponseEntity<>("Comment and image successfully saved", HttpStatus.OK);
 	}
 
-	@GetMapping("/by-topic/{topic}")
-	public List<CommentWithFileDTO> getAllCommentsByTopic(@PathVariable("topic") String topic) {
+	@GetMapping("/list")
+	public List<CommentWithFileDTO> getAllCommentsByTopic(@RequestParam("topicId") int topic) {
 		return commentService.getAllCommentsWithFileByTopic(topic);
 	}
 }

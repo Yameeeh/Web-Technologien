@@ -10,6 +10,6 @@ import com.webtech.football.entities.Comment;
 @Repository
 public interface CommentRepository extends JpaRepository<Comment, Long> {
 
-	List<Comment> getAllCommentsByTopic(String topic);
+	List<Comment> getAllCommentsByTopic(int topic);
 
 }

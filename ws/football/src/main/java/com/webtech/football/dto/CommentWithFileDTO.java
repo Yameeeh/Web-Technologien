@@ -2,8 +2,6 @@ package com.webtech.football.dto;
 
 import java.time.LocalDate;
 
-import com.webtech.football.entities.FileEntity;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,6 +14,6 @@ public class CommentWithFileDTO {
 	private String userID;
 	private String text;
 	private LocalDate time;
-	private String topic;
-	private FileEntity file;
+	private int topic;
+	private String fileName;
 }

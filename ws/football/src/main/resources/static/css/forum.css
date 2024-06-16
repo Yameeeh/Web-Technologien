@@ -195,22 +195,22 @@ color: #C1A875;
 }
 
 .sidebar li a:hover #icon1 {
-background-image: url("assets/homefill.png");
+background-image: url("/assets/homefill.png");
 background-size: cover;
 }
 
 .sidebar li a:hover #icon2 {
-background-image: url("assets/Angesagtfill.png");
+background-image: url("/assets/Angesagtfill.png");
 background-size: cover;
 }
 
 .sidebar li a:hover #icon3 {
-background-image: url("assets/icon-uhr-fill.png");
+background-image: url("/assets/icon-uhr-fill.png");
 background-size: cover;
 }
 
 .sidebar li a:hover #icon4 {
-background-image: url("assets/icon-topic-fill.png");
+background-image: url("/assets/icon-topic-fill.png");
 background-size: cover;
 }
 

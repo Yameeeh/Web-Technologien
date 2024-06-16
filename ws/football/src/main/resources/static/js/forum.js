@@ -149,7 +149,7 @@ document.getElementById('uploadButton').addEventListener('click', function() {
 document.getElementById('fileInput').addEventListener('change', handleFileChange);
 
 // Daten an Backend schicken
-async function postComment(currentTopicId) {
+async function postComment() {
 	const comment = document.getElementById('userComment').value;
 	const fileInput = document.getElementById('fileInput');
 	const file = fileInput.files[0];
@@ -162,7 +162,7 @@ async function postComment(currentTopicId) {
 	const formData = new FormData();
 	formData.append('comment', comment);
 	formData.append('image', file);
-	formData.append('topicId', currentTopicId); // Hinzufügen der Topic-ID
+	formData.append('topicId', currentTopicId);
 
 	try {
 		const response = await fetch('http://localhost:8080/api/comments', {
@@ -176,8 +176,10 @@ async function postComment(currentTopicId) {
 
 		const result = await response.text();
 		console.log('Erfolgreich gepostet:', result);
-		alert('Kommentar und Bild wurden erfolgreich gepostet!');
-		// Hier könntest du den Kommentar und das Bild auf der Seite anzeigen
+        alert('Kommentar und Bild wurden erfolgreich gepostet!');
+        
+        loadComments(currentTopicId);
+
 	} catch (error) {
 		console.error('Es gab ein Problem mit der Anfrage:', error);
 		alert('Es gab ein Problem beim Posten des Kommentars und Bildes.');
@@ -185,14 +187,14 @@ async function postComment(currentTopicId) {
 }
 
 // Event Listener für den Post-Button per ID
-document.getElementById('postButton').addEventListener('click', postComment);
+
 
 
 
 // Daten aus dem Backend laden 
 async function loadComments(topicId) {
 	try {
-		const response = await fetch(`http://localhost:8080/api/comments?topicId=${topicId}`);
+		const response = await fetch(`http://localhost:8080/api/comments/list?topicId=${topicId}`);
 		if (!response.ok) {
 			throw new Error('Network response was not ok ' + response.statusText);
 		}
@@ -206,7 +208,7 @@ async function loadComments(topicId) {
 			commentElement.classList.add('comment');
 			commentElement.innerHTML = `
 				<p>${comment.text}</p>
-				<img src="http://localhost:8080/uploads/${comment.imagePath}" alt="Comment Image">
+				${comment.fileName ? `<img src="http://localhost:8080/uploads/${comment.fileName}" alt="Comment Image">` : ''}
 			`;
 			commentSection.appendChild(commentElement);
 		});
@@ -216,10 +218,11 @@ async function loadComments(topicId) {
 	}
 }
 
+let currentTopicId = null;
 // Das richtige Topic Fenster öffnen
 function openTopic(topicId) {
-	let currentTopicId = null;
-	currentTopicId = topicId;
+
+    currentTopicId = topicId;
 	const tabs = document.querySelectorAll('.nav-link a');
 	const commentSections = document.querySelectorAll('.comment-section');
 

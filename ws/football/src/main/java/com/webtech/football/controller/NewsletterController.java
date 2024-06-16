@@ -1,10 +1,14 @@
 package com.webtech.football.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,11 +23,12 @@ public class NewsletterController {
 	NewsletterService newsletterService;
 
 	@PostMapping
-	public ResponseEntity<String> postEmail(@RequestParam("email") String email) {
-
+	public ResponseEntity<Map<String, String>> postEmail(@RequestBody Map<String, String> request) {
+		String email = request.get("email");
 		newsletterService.saveAdresse(email);
-
-		return new ResponseEntity<>("Newsletter Registration erfolgreich", HttpStatus.OK);
+		Map<String, String> response = new HashMap<>();
+		response.put("message", "Newsletter Registration erfolgreich");
+		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
 	@DeleteMapping
@@ -31,7 +36,7 @@ public class NewsletterController {
 
 		newsletterService.deleteAdresse(email);
 
-		return new ResponseEntity<>("Newsletter Abmeldung erfolgreich", HttpStatus.OK);
+		return new ResponseEntity<String>("Newsletter Abmeldung erfolgreich", HttpStatus.OK);
 	}
 
 }
