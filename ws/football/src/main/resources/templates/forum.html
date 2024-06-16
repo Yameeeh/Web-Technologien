@@ -7,12 +7,12 @@
         <title>Document</title>
         <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
         <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="/css/forum.css">
+        <link rel="stylesheet" href="style.css">
     </head>
 
     <body>
         <header class="header">
-            <a href="index.html"><img src="/assets/Logo.png" class="logo"></a>
+            <a href="index.html"><img src="assets/Logo.png" class="logo"></a>
             <input type="checkbox" id="check">
             <label for="check" class="menu">
                 <i class="bx bx-menu" id="icon-menu"></i>
@@ -35,64 +35,58 @@
                     </label>
                     <div class="menu-block">
                     <li class="nav-link">
-                        <a href="#">
-                            <img src="/assets/Home.png" class="sidebar-icon" id="icon1"></i>
+                        <a href="#start" onclick="markActiveLink(1)">
+                            <img src="assets/Home.png" class="sidebar-icon" id="icon1"></i>
                             <span class="text nav-text">Startseite</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="#">
-                            <img src="/assets/Angesagt.png" class="sidebar-icon" id="icon2"></i>
+                        <a href="#" onclick="markActiveLink(2)">
+                            <img src="assets/Angesagt.png" class="sidebar-icon" id="icon2"></i>
                             <span class="text nav-text">Angesagt</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="#">
-                            <img src="/assets/icon-uhr.png" class="sidebar-icon" id="icon3"></i>
+                        <a href="#" onclick="markActiveLink(3)">
+                            <img src="assets/icon-uhr.png" class="sidebar-icon" id="icon3"></i>
                             <span class="text nav-text">Zuletzt geteilt</span>
                         </a>
                     </li>
                     <!-- <div class="strich">
                     </div> //-->
                     <li class="nav-link">
-                        <a href="#">
-                            <img src="/assets/icon-topic.png" class="sidebar-icon" id="icon4"></i>
+                        <a href="#" onclick="openTopic(1); markActiveLink(4)">
+                            <img src="assets/icon-topic.png" class="sidebar-icon" id="icon4"></i>
                             <span class="text nav-text">Topic 1</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="#">
-                            <img src="/assets/icon-topic.png" class="sidebar-icon" id="icon4"></i>
+                        <a href="#" onclick="openTopic(2); markActiveLink(5)">
+                            <img src="assets/icon-topic.png" class="sidebar-icon" id="icon4"></i>
                             <span class="text nav-text">Topic 2</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="#">
-                            <img src="/assets/icon-topic.png" class="sidebar-icon" id="icon4"></i>
+                        <a href="#" onclick="openTopic(3); markActiveLink(6)">
+                            <img src="assets/icon-topic.png" class="sidebar-icon" id="icon4"></i>
                             <span class="text nav-text">Topic 3</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="#">
-                            <img src="/assets/icon-topic.png" class="sidebar-icon" id="icon4"></i>
+                        <a href="#" onclick="openTopic(4); markActiveLink(7)">
+                            <img src="assets/icon-topic.png" class="sidebar-icon" id="icon4"></i>
                             <span class="text nav-text">Topic 4</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="#">
-                            <img src="/assets/icon-topic.png" class="sidebar-icon" id="icon4"></i>
+                        <a href="#" onclick="openTopic(5); markActiveLink(8)">
+                            <img src="assets/icon-topic.png" class="sidebar-icon" id="icon4"></i>
                             <span class="text nav-text">Topic 5</span>
                         </a>
                     </li>
                     <!-- <div class="strich">
                     </div> //-->
-                    <li class="nav-link">
-                        <a href="#">
-                            <img src="/assets/icon-topic.png" class="sidebar-icon"></i>
-                            <span class="text nav-text">Topic 5</span>
-                        </a>
-                    </li>
-                    <li class="nav-link">
+                    <li class="nav-link" id="post-button-container" style="display: none;">
                         <button onclick="togglePopup()" class="button-18">Posten</button>
                     </li>
                 </aside>
@@ -101,7 +95,7 @@
                     <div class="content" id="content">
                         <div class="commentbox">
                             <div class="userimage">
-                                <img src="/assets/user.png" class="userimage">
+                                <img src="assets/user.png" class="userimage">
                             </div>
                             <div class="commentinput">
                                 <textarea type="text" id="userComment" placeholder="Was gibt's Neues?!" class="usercomment"></textarea>
@@ -111,13 +105,13 @@
                         <div class="bottomsection">
                             <div class="icons">
                                 <button id="uploadButton" title="Upload Photo">
-                                    <img src="/assets/popup-gallery.png" alt="Upload Image">
+                                    <img src="assets/popup-gallery.png" alt="Upload Image">
                                 </button>
                                 <p id="uploadMessage" style="display: none;">Es kann nur ein Foto hochgeladen werden</p>
                                 <input type="file" id="fileInput" accept="image/*" style="display:none">
                             </div>
                             <div class="post-button">
-                                <button class="button-18" onclick="postComment()">Posten</button>
+                                <button class="button-18" onclick="postComment(currentTopicId)">Posten</button>
                             </div>
                         </div>
                         <div class="close-btn" onclick="togglePopup()">&times;
@@ -127,12 +121,29 @@
                 
                 <main class="main">
                     <div class="commentsection">
-                        <div class="comment">
-
+                        <div id="comment-section-1" class="comment-section">
+                            <h2>Topic 1 Comments</h2>
+                            <div id="comments-1"></div>
+                        </div>
+                        <div id="comment-section-2" class="comment-section">
+                            <h2>Topic 2 Comments</h2>
+                            <div id="comments-2"></div>
+                        </div>
+                        <div id="comment-section-3" class="comment-section">
+                            <h2>Topic 3 Comments</h2>
+                            <div id="comments-3"></div>
+                        </div>
+                        <div id="comment-section-4" class="comment-section">
+                            <h2>Topic 4 Comments</h2>
+                            <div id="comments-4"></div>
+                        </div>
+                        <div id="comment-section-5" class="comment-section">
+                            <h2>Topic 5 Comments</h2>
+                            <div id="comments-5"></div>
                         </div>
                     </div>
                 </main>
             </div>     
-            <script src="/js/forum.js"></script>
+            <script src="test.js"></script>
     </body>
     </html>
