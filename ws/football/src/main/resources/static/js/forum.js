@@ -1,3 +1,5 @@
+
+
 /*Sidebar*/
 document.addEventListener("DOMContentLoaded", function () {
     const checkbox = document.getElementById("check2");
@@ -146,66 +148,100 @@ document.getElementById('uploadButton').addEventListener('click', function() {
 // Event-Handling für das Ändern der Datei registrieren
 document.getElementById('fileInput').addEventListener('change', handleFileChange);
 
-async function postComment() {
-    const comment = document.getElementById('userComment').value;
-    const fileInput = document.getElementById('fileInput');
-    const file = fileInput.files[0];
+// Daten an Backend schicken
+async function postComment(currentTopicId) {
+	const comment = document.getElementById('userComment').value;
+	const fileInput = document.getElementById('fileInput');
+	const file = fileInput.files[0];
 
-    if (!comment) {
-        alert('Bitte geben Sie einen Kommentar ein.');
-        return;
-    }
+	if (!comment) {
+		alert('Bitte geben Sie einen Kommentar ein.');
+		return;
+	}
 
-    if (!file) {
-        alert('Bitte laden Sie ein Bild hoch.');
-        return;
-    }
+	const formData = new FormData();
+	formData.append('comment', comment);
+	formData.append('image', file);
+	formData.append('topicId', currentTopicId); // Hinzufügen der Topic-ID
 
-    const formData = new FormData();
-    formData.append('comment', comment);
-    formData.append('image', file);
+	try {
+		const response = await fetch('http://localhost:8080/api/comments', {
+			method: 'POST',
+			body: formData
+		});
 
-    try {
-        const response = await fetch('http://localhost:8080/api/comments', {
-            method: 'POST',
-            body: formData
-        });
+		if (!response.ok) {
+			throw new Error('Network response was not ok ' + response.statusText);
+		}
 
-        if (!response.ok) {
-            throw new Error('Network response was not ok ' + response.statusText);
-        }
-
-        const result = await response.text();
-        console.log('Erfolgreich gepostet:', result);
-        alert('Kommentar und Bild wurden erfolgreich gepostet!');
-        // Hier könntest du den Kommentar und das Bild auf der Seite anzeigen
-    } catch (error) {
-        console.error('Es gab ein Problem mit der Anfrage:', error);
-        alert('Es gab ein Problem beim Posten des Kommentars und Bildes.');
-    }
+		const result = await response.text();
+		console.log('Erfolgreich gepostet:', result);
+		alert('Kommentar und Bild wurden erfolgreich gepostet!');
+		// Hier könntest du den Kommentar und das Bild auf der Seite anzeigen
+	} catch (error) {
+		console.error('Es gab ein Problem mit der Anfrage:', error);
+		alert('Es gab ein Problem beim Posten des Kommentars und Bildes.');
+	}
 }
 
+// Event Listener für den Post-Button per ID
+document.getElementById('postButton').addEventListener('click', postComment);
 
 
 
 // Daten aus dem Backend laden 
-function loadComments() {
-    fetch('http://localhost:8080/api/comments')
-        .then(response => response.json())
-        .then(comments => {
-            const container = document.getElementById('comment');
-            container.innerHTML = '';
-            comments.forEach(comment => {
-                const commentElement = document.createElement('div');
-                commentElement.className = 'comment-container';
-                commentElement.innerHTML = `
-                    <p>${comment.comment}</p>
-                    ${comment.imagePath ? `<img src="${comment.imagePath}" alt="Comment Image">` : ''}
-                `;
-                container.appendChild(commentElement);
-            });
-        })
-        .catch(error => console.error('Error loading comments:', error));
+async function loadComments(topicId) {
+	try {
+		const response = await fetch(`http://localhost:8080/api/comments?topicId=${topicId}`);
+		if (!response.ok) {
+			throw new Error('Network response was not ok ' + response.statusText);
+		}
+
+		const comments = await response.json();
+		const commentSection = document.getElementById(`comment-section-${topicId}`);
+		commentSection.innerHTML = ''; // Leeren der Kommentar-Sektion
+
+		comments.forEach(comment => {
+			const commentElement = document.createElement('div');
+			commentElement.classList.add('comment');
+			commentElement.innerHTML = `
+				<p>${comment.text}</p>
+				<img src="http://localhost:8080/uploads/${comment.imagePath}" alt="Comment Image">
+			`;
+			commentSection.appendChild(commentElement);
+		});
+
+	} catch (error) {
+		console.error('Es gab ein Problem beim Laden der Kommentare:', error);
+	}
 }
 
-window.onload = loadComments;
+// Das richtige Topic Fenster öffnen
+function openTopic(topicId) {
+	let currentTopicId = null;
+	currentTopicId = topicId;
+	const tabs = document.querySelectorAll('.nav-link a');
+	const commentSections = document.querySelectorAll('.comment-section');
+
+	tabs.forEach(tab => tab.parentElement.classList.remove('active'));
+	commentSections.forEach(section => section.classList.remove('active'));
+
+	document.querySelector(`.nav-link:nth-child(${topicId + 3})`).classList.add('active');
+	document.getElementById(`comment-section-${topicId}`).classList.add('active');
+
+	document.getElementById('post-button-container').style.display = 'block';
+
+	loadComments(topicId);
+}
+
+// Funktion, um die Farbe der Links beim Klicken zu ändern
+function markActiveLink(topicId) {
+    const links = document.querySelectorAll('.sidebar li .text');
+    links.forEach(link => {
+        link.classList.remove('active');
+    });
+
+    const activeLink = document.querySelector(`.sidebar li:nth-child(${topicId}) .text`);
+    if (activeLink) {
+        activeLink.classList.add('active');
+    }}
