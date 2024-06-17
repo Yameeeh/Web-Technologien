@@ -192,7 +192,7 @@ async function postComment() {
 
 
 // Daten aus dem Backend laden 
-async function loadComments(topicId) {
+/*async function loadComments(topicId) {
 	try {
 		const response = await fetch(`http://localhost:8080/api/comments/list?topicId=${topicId}`);
 		if (!response.ok) {
@@ -216,7 +216,60 @@ async function loadComments(topicId) {
 	} catch (error) {
 		console.error('Es gab ein Problem beim Laden der Kommentare:', error);
 	}
+}*/
+
+async function loadComments(topicId) {
+	try {
+		const response = await fetch(`http://localhost:8080/api/comments?topicId=${topicId}`);
+		if (!response.ok) {
+			throw new Error('Network response was not ok ' + response.statusText);
+		}
+
+		const comments = await response.json();
+		const commentSection = document.getElementById(`comment-section-${topicId}`);
+		commentSection.innerHTML = ''; // Leeren der Kommentar-Sektion
+
+		comments.forEach(comment => {
+			// Erstellen des übergeordneten Containers
+			const commentContainer = document.createElement('div');
+			commentContainer.classList.add('comment-container');
+
+			// Profilbildbereich
+			const profilePictureSection = document.createElement('div');
+			profilePictureSection.classList.add('profile-picture-section');
+			const profilePicture = document.createElement('img');
+			profilePicture.src = '/assets/user.png'; // Platzhalterbild oder URL zum Profilbild des Benutzers
+			profilePicture.alt = 'Profile Picture';
+			profilePictureSection.appendChild(profilePicture);
+
+			// Kommentarbereich
+			const commentElement = document.createElement('div');
+			commentElement.classList.add('comment');
+			const userContainer = document.createElement('div');
+			userContainer.classList.add('user');
+			const userName = document.createElement('p');
+			userName.textContent = 'Username'; // Ersetzen mit dem tatsächlichen Benutzernamen
+			userContainer.appendChild(userName);
+
+			commentElement.innerHTML = `
+                <p>${comment.text}</p>
+				${comment.fileName ? `<img src="http://localhost:8080/uploads/${comment.fileName}" alt="Comment Image">` : ''}
+			`;
+
+			// Hinzufügen der erstellten Bereiche zum übergeordneten Container
+			commentContainer.appendChild(profilePictureSection);
+			commentContainer.appendChild(userContainer); // Benutzercontainer über dem Kommentar hinzufügen
+			commentContainer.appendChild(commentElement);
+			
+			// Hinzufügen des übergeordneten Containers zur Kommentar-Sektion
+			commentSection.appendChild(commentContainer);
+		});
+	} catch (error) {
+		console.error('Es gab ein Problem beim Laden der Kommentare:', error);
+	}
 }
+
+
 
 let currentTopicId = null;
 // Das richtige Topic Fenster öffnen
