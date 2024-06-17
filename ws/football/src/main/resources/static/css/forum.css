@@ -3,7 +3,6 @@
 padding: 0;
 margin:0;
 box-sizing: border-box;
-
 background-color: black;
 } 
 
@@ -195,22 +194,22 @@ color: #C1A875;
 }
 
 .sidebar li a:hover #icon1 {
-background-image: url("/assets/homefill.png");
+background-image: url("assets/homefill.png");
 background-size: cover;
 }
 
 .sidebar li a:hover #icon2 {
-background-image: url("/assets/Angesagtfill.png");
+background-image: url("assets/Angesagtfill.png");
 background-size: cover;
 }
 
 .sidebar li a:hover #icon3 {
-background-image: url("/assets/icon-uhr-fill.png");
+background-image: url("assets/icon-uhr-fill.png");
 background-size: cover;
 }
 
 .sidebar li a:hover #icon4 {
-background-image: url("/assets/icon-topic-fill.png");
+background-image: url("assets/icon-topic-fill.png");
 background-size: cover;
 }
 
@@ -267,6 +266,7 @@ display: inline;
 }
 }
 
+/* Bereich für Kommentare */
 .main {
     width: 75%;
     display: flex;
@@ -277,41 +277,84 @@ display: inline;
     margin-left: 25%;
     margin-top: 110px;
 }
-
 @media (max-width: 1100px) {
 .main {
 margin-left: 100px;
 width: calc(100% - 100px);
 }
 }
-
 .commentsection {
-text-align: center;
-width: 60%;
-height: 100vh;
-background-color: rgb(10, 10, 10);
-border: 1px solid rgba(80, 80, 80, 0.5);
-color: white;
-}
-.comment {
-    height: 500px;
+    text-align: center;
+    width: 60%;
+    color: white;
 }
 .comment-container {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 10px;
+    border: 2px solid rgba(80, 80, 80, 0.5);
+    padding: 15px;
+    display: flex;
+    margin-top: -2px;
 }
-.comment-container img {
-    max-width: 100%;
-    height: auto;
+.profile-picture-section {
+    width: 10%;
 }
-
+.profile-picture-section img {
+    width: 100%;
+    border-radius: 200px;
+    margin-top: 15px;
+}
+/* Rechte Section der Commentsection */
+.comment {
+    text-align: left;
+    padding: 15px;
+    width: 90%;
+}
+.user {
+    text-align: left;
+    font-weight: 800;
+    font-size: 22px;
+}
+.comment p {
+    margin-top: 10px;
+    text-align: left;
+    font-size: 22px;
+    hyphens: auto;
+    text-align: justify;
+}
+.comment img {
+    margin-top: 10px;
+    border-radius: 18px;
+    border: 2px solid rgba(80, 80, 80, 0.5);
+    width: 100%;
+}
 .comment-section {
     display: none;
 }
 .comment-section.active {
     display: block;
 }
+/* Responsives Design Kommentare */
+@media (max-width: 1450px) { 
+    .commentsection {
+        width: 80%;
+    }
+}
+@media (max-width: 915px) { 
+    .user {
+        font-size: 18px;
+    }
+    .comment p {
+        font-size: 18px;
+    }
+}
+@media (max-width: 730px) { 
+    .user {
+        font-size: 16px;
+    }
+    .comment p {
+        font-size: 16px;
+    }
+}
+
 
 
 .button-18 {
