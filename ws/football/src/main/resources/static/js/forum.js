@@ -220,7 +220,7 @@ async function postComment() {
 
 async function loadComments(topicId) {
 	try {
-		const response = await fetch(`http://localhost:8080/api/comments?topicId=${topicId}`);
+		const response = await fetch(`http://localhost:8080/api/comments/list?topicId=${topicId}`);
 		if (!response.ok) {
 			throw new Error('Network response was not ok ' + response.statusText);
 		}
@@ -249,16 +249,16 @@ async function loadComments(topicId) {
 			userContainer.classList.add('user');
 			const userName = document.createElement('p');
 			userName.textContent = 'Username'; // Ersetzen mit dem tatsächlichen Benutzernamen
-			userContainer.appendChild(userName);
+            userContainer.appendChild(userName);
+            commentElement.appendChild(userContainer); // Benutzercontainer über dem Kommentar hinzufügen
 
-			commentElement.innerHTML = `
+            commentElement.innerHTML += `
                 <p>${comment.text}</p>
 				${comment.fileName ? `<img src="http://localhost:8080/uploads/${comment.fileName}" alt="Comment Image">` : ''}
 			`;
 
 			// Hinzufügen der erstellten Bereiche zum übergeordneten Container
-			commentContainer.appendChild(profilePictureSection);
-			commentContainer.appendChild(userContainer); // Benutzercontainer über dem Kommentar hinzufügen
+            commentContainer.appendChild(profilePictureSection);
 			commentContainer.appendChild(commentElement);
 			
 			// Hinzufügen des übergeordneten Containers zur Kommentar-Sektion

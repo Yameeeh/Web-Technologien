@@ -26,4 +26,7 @@ public class Mannschaft {
 	@Column(name = "gruppe", nullable = false, length = 1)
 	private String gruppe;
 
+	@Column(name = "flagge", nullable = false)
+	private String flagge;
+
 }

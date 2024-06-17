@@ -19,7 +19,7 @@ public class UserService {
 		this.passwordEncoder = passwordEncoder;
 	}
 
-	public User registerUser(String username, String password) {
+	public User registerUser(String username, String password, String email) {
 		// Check if username is already taken
 		if (userRepository.existsByUsername(username)) {
 			throw new IllegalArgumentException("Username is already taken.");
@@ -31,16 +31,9 @@ public class UserService {
 		User user = new User();
 		user.setUsername(username);
 		user.setPassword(encodedPassword);
+		user.setEmail(email);
+		user.setRoles("USER");
 
 		return userRepository.save(user);
 	}
-
-	public boolean authenticate(String username, String password) {
-		// Retrieve the user by username
-		User user = userRepository.findByUsername(username);
-
-		// Check if the user exists and the password matches
-		return user != null && passwordEncoder.matches(password, user.getPassword());
-	}
-
 }

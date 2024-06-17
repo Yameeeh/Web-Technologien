@@ -257,18 +257,16 @@ main {
 
 .fotowand .kroos {
     position: absolute;
-    height: 480px;
-    width: 700px;
+    width: 50%;
     top: 465px;
-    margin-left: 24%;
+    margin-left: 17%;
 }
 
 .fotowand .trainer {
     position: absolute;
-    height: 280px;
     width: 480px;
     top: 465px;
-    margin-left: 1159px;
+    margin-left: 69%;
 }
 
 .fotowand .linie-strafraum {
