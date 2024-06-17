@@ -259,14 +259,14 @@ main {
     position: absolute;
     width: 50%;
     top: 465px;
-    margin-left: 17%;
+    margin-left: 10%;
 }
 
 .fotowand .trainer {
     position: absolute;
-    width: 480px;
+    width: 32%;
     top: 465px;
-    margin-left: 69%;
+    margin-left: 62%;
 }
 
 .fotowand .linie-strafraum {
