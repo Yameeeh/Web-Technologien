@@ -25,57 +25,62 @@ function checkCheckbox() {
 }*/
 
 // Event-Listener für den Button
-document.getElementById('button').addEventListener('click', checkCheckbox);
 
 
-const registerForm = document.getElementById('registerForm');
-const checkbox = document.getElementById('checkbox');
-const checkboxLabel = document.getElementById('label');
 
-registerForm.addEventListener('submit', async (event) => {
-    event.preventDefault();
+document.addEventListener('DOMContentLoaded', (event) => {
+    const registerForm = document.getElementById('registerForm');
+    const checkbox = document.getElementById('checkbox');
+    const checkboxLabel = document.getElementById('label');
 
-    // Überprüfen, ob die Checkbox aktiviert ist
-    if (!checkbox.checked) {
-        checkboxLabel.classList.add('checkbox-warning');
-        return;
-    } else {
-        checkboxLabel.classList.remove('checkbox-warning');
-    }
+    registerForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
 
-    // Daten aus dem Formular abrufen
-    const formData = new FormData(registerForm);
-    const data = Object.fromEntries(formData.entries());
-
-    try {
-        const response = await fetch('/api/register', { // Passen Sie die URL an Ihre API an
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        });
-
-        if (response.ok) {
-            // Registrierung erfolgreich
-            alert('Registrierung erfolgreich!');
-            // Weitere Aktionen, wie Weiterleitung zu einer anderen Seite
+        // Überprüfen, ob die Checkbox aktiviert ist
+        if (!checkbox.checked) {
+            checkboxLabel.classList.add('checkbox-warning');
+            return;
         } else {
-            // Fehler bei der Registrierung
-            alert('Fehler bei der Registrierung');
+            checkboxLabel.classList.remove('checkbox-warning');
         }
-    } catch (error) {
-        console.error('Error:', error);
-        alert('Ein Fehler ist aufgetreten');
+
+        // Daten aus dem Formular abrufen
+        const formData = new FormData(registerForm);
+        const data = Object.fromEntries(formData.entries());
+
+        try {
+            const response = await fetch('/api/auth/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            const responseData = await response.text(); // Antworttext lesen
+
+            if (response.ok) {
+                // Registrierung erfolgreich
+                alert(responseData);
+                window.location.href = '/login';
+            } else {
+                // Fehler bei der Registrierung
+                alert(responseData);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Ein Fehler ist aufgetreten: ' + error.message);
+        }
+    });
+
+
+    function checkCheckbox() {
+        if (!checkbox.checked) {
+            checkboxLabel.classList.add('checkbox-warning');
+        } else {
+            checkboxLabel.classList.remove('checkbox-warning');
+        }
     }
+
+    document.getElementById('button').addEventListener('click', checkCheckbox);
 });
-
-function checkCheckbox() {
-    if (!checkbox.checked) {
-        checkboxLabel.classList.add('checkbox-warning');
-    } else {
-        checkboxLabel.classList.remove('checkbox-warning');
-    }
-}
-
-document.getElementById('button').addEventListener('click', checkCheckbox);
