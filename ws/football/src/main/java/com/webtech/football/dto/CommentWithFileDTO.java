@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CommentWithFileDTO {
 	private Long id;
-	private String userID;
+	private String username;
 	private String text;
 	private LocalDate time;
 	private int topic;

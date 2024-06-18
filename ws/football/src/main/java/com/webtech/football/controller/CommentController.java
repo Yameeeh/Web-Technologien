@@ -37,7 +37,7 @@ public class CommentController {
 	public ResponseEntity<String> postComment(@RequestParam("comment") String comment,
 			@RequestParam("image") MultipartFile image, @RequestParam("topicId") int topicID) {
 
-		Comment kommentar = commentService.addComment(comment, "userID", topicID);
+		Comment kommentar = commentService.addComment(comment, topicID);
 
 		// Save image
 		try {

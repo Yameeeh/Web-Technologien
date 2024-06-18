@@ -1,4 +1,4 @@
-package com.webtech.football.config;
+package com.webtech.football.security;
 
 import java.util.Collection;
 import java.util.List;

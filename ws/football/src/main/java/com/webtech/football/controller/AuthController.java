@@ -24,7 +24,7 @@ import com.webtech.football.repositories.UserRepository;
 
 @RestController
 @RequestMapping("/api/auth")
-public class UserController {
+public class AuthController {
 
 	private AuthenticationManager authenticationManager;
 	private UserRepository userRepository;
@@ -32,36 +32,13 @@ public class UserController {
 	private PasswordEncoder passwordEncoder;
 
 	@Autowired
-	public UserController(AuthenticationManager authenticationManager, UserRepository userRepository,
+	public AuthController(AuthenticationManager authenticationManager, UserRepository userRepository,
 			RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
 		this.authenticationManager = authenticationManager;
 		this.userRepository = userRepository;
 		this.roleRepository = roleRepository;
 		this.passwordEncoder = passwordEncoder;
 	}
-
-//	@Autowired
-//	public UserController(AuthenticationManager authenticationManager, UserService userService) {
-//		this.authenticationManager = authenticationManager;
-//		this.userService = userService;
-//	}
-//
-//	@PostMapping("/login")
-//	public ResponseEntity<?> login(@RequestBody Map<String, String> loginData) {
-//		String username = loginData.get("username");
-//		String password = loginData.get("password");
-//		try {
-//			Authentication authentication = authenticationManager
-//					.authenticate(new UsernamePasswordAuthenticationToken(username, password));
-//
-//			SecurityContextHolder.getContext().setAuthentication(authentication);
-//
-//			return ResponseEntity.ok("Login successful");
-//		} catch (Exception e) {
-//			return ResponseEntity.status(401).body("Invalid username or password");
-//		}
-//	}
-//
 
 	@PostMapping("/login")
 	public ResponseEntity<String> login(@RequestBody LoginDTO loginData) {

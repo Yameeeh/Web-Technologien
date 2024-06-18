@@ -18,6 +18,11 @@ public class ResourceController {
 		return "login";
 	}
 
+	@GetMapping("/kader")
+	public String kaderEndpoint() {
+		return "kader";
+	}
+
 	@GetMapping("/stadien")
 	public String stadienEndpoint() {
 		return "stadien";

@@ -23,8 +23,8 @@ public class Comment {
 	@Column(name = "ID")
 	private Long id;
 
-	@JoinColumn(name = "USER_ID", nullable = false)
-	private String userID;
+	@JoinColumn(name = "user_username", nullable = false)
+	private String username;
 
 	@Column(name = "TEXT", nullable = false)
 	private String text;
