@@ -7,7 +7,7 @@
 
 main {
     min-height: 100vh;
-    background-image: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("C:\xampp\htdocs\Website\assets\start.jpg");
+    background-image: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("\assets\start.jpg");
     background-size: cover;
     background-position: center;
 }
