@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-
+/* Slideshow */
 const myslide = document.querySelectorAll('.myslider'),
         dot = document.querySelectorAll('.dot');
 
