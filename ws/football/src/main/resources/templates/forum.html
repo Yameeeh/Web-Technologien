@@ -4,15 +4,15 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>Forum</title>
         <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
         <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="/css/forum.css">
+        <link rel="stylesheet" href="css/forum.css">
     </head>
 
     <body>
         <header class="header">
-            <a href="index.html"><img src="/assets/Logo.png" class="logo"></a>
+            <a href="index.html"><img src="assets/Logo.png" class="logo"></a>
             <input type="checkbox" id="check">
             <label for="check" class="menu">
                 <i class="bx bx-menu" id="icon-menu"></i>
@@ -20,9 +20,10 @@
             </label>    
             <nav class="navbar">
                 <a href="index.html">Startseite</a>
-                <a href="stadien.html">Euro 2024</a>
-                <a href="#">Ergebnisse</a>
-                <a href="forum.html">Forum</a>
+                <a href="kader.html">DFB-Kader</a>
+                <a href="stadien.html">Stadien</a>
+                <a href="ergebnisse.html">Ergebnisse</a>
+                <a href="forum.html" style="color: #C1A875">Forum</a>
                 <a href="login.html">Login</a>
             </nav>
             </header>
@@ -34,7 +35,7 @@
                         <i class="bx bx-x" id="close-menu2"></i>
                     </label>
                     <div class="menu-block">
-                    <li class="nav-link">
+                    <!--<li class="nav-link">
                         <a href="#start" onclick="markActiveLink(1)">
                             <img src="/assets/Home.png" class="sidebar-icon" id="icon1"></i>
                             <span class="text nav-text">Startseite</span>
@@ -51,35 +52,35 @@
                             <img src="/assets/icon-uhr.png" class="sidebar-icon" id="icon3"></i>
                             <span class="text nav-text">Zuletzt geteilt</span>
                         </a>
-                    </li>
+                    </li>-->
                     <!-- <div class="strich">
                     </div> //-->
                     <li class="nav-link">
-                        <a href="#1" onclick="openTopic(1); markActiveLink(4)">
+                        <a href="#1" onclick="openTopic(1); markActiveLink(1)">
                             <img src="/assets/icon-topic.png" class="sidebar-icon" id="icon4"></i>
                             <span class="text nav-text">Topic 1</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="#2" onclick="openTopic(2); markActiveLink(5)">
+                        <a href="#2" onclick="openTopic(2); markActiveLink(2)">
                             <img src="/assets/icon-topic.png" class="sidebar-icon" id="icon4"></i>
                             <span class="text nav-text">Topic 2</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="#3" onclick="openTopic(3); markActiveLink(6)">
+                        <a href="#3" onclick="openTopic(3); markActiveLink(3)">
                             <img src="/assets/icon-topic.png" class="sidebar-icon" id="icon4"></i>
                             <span class="text nav-text">Topic 3</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="#4" onclick="openTopic(4); markActiveLink(7)">
+                        <a href="#4" onclick="openTopic(4); markActiveLink(4)">
                             <img src="/assets/icon-topic.png" class="sidebar-icon" id="icon4"></i>
                             <span class="text nav-text">Topic 4</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="#5" onclick="openTopic(5); markActiveLink(8)">
+                        <a href="#5" onclick="openTopic(5); markActiveLink(5)">
                             <img src="/assets/icon-topic.png" class="sidebar-icon" id="icon4"></i>
                             <span class="text nav-text">Topic 5</span>
                         </a>
@@ -144,6 +145,6 @@
                     </div>
                 </main>
             </div>     
-            <script src="/js/forum.js"></script>
+            <script src="js/forum.js"></script>
     </body>
     </html>
