@@ -10,16 +10,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "Newsletter")
+@Table(name = "roles")
 @Data
 @NoArgsConstructor
-public class NewsletterAdresse {
+public class Role {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private int id;
 
-	@Column(name = "EMAIL", nullable = false, unique = true)
-	private String email;
+	@Column(name = "name")
+	private String name;
 
 }

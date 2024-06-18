@@ -1,17 +1,17 @@
 package com.webtech.football.repositories;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.webtech.football.entities.User;
+import com.webtech.football.entities.UserEntity;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, String> {
+public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
-	// Custom query method to find a user by username
-	User findByUsername(String username);
+	Optional<UserEntity> findByUsername(String username);
 
-	// Custom query method to check if a username exists
 	boolean existsByUsername(String username);
 
 }

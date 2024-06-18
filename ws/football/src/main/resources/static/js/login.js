@@ -59,14 +59,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
             const responseData = await response.text(); // Antworttext lesen
 
-            if (response.ok) {
-                // Registrierung erfolgreich
-                alert(responseData);
-                window.location.href = '/login';
-            } else {
-                // Fehler bei der Registrierung
-                alert(responseData);
-            }
+            alert(responseData);
+            
         } catch (error) {
             console.error('Error:', error);
             alert('Ein Fehler ist aufgetreten: ' + error.message);
@@ -83,4 +77,36 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
 
     document.getElementById('button').addEventListener('click', checkCheckbox);
+});
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    const registerForm = document.getElementById('loginForm');
+
+    registerForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        // Daten aus dem Formular abrufen
+        const formData = new FormData(loginForm);
+        const data = Object.fromEntries(formData.entries());
+
+        try {
+            const response = await fetch('/api/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            const responseData = await response.text(); // Antworttext lesen
+
+           
+            alert(responseData);
+    
+
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Ein Fehler ist aufgetreten: ' + error.message);
+        }
+    });
 });
