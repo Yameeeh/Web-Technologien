@@ -36,7 +36,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     registerForm.addEventListener('submit', async (event) => {
         event.preventDefault();
 
-        // Überprüfen, ob die Checkbox aktiviert ist
         if (!checkbox.checked) {
             checkboxLabel.classList.add('checkbox-warning');
             return;
@@ -44,7 +43,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
             checkboxLabel.classList.remove('checkbox-warning');
         }
 
-        // Daten aus dem Formular abrufen
         const formData = new FormData(registerForm);
         const data = Object.fromEntries(formData.entries());
 
@@ -57,9 +55,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 body: JSON.stringify(data)
             });
 
-            const responseData = await response.text(); // Antworttext lesen
-
-            alert(responseData);
+            const responseData = await response.text();
+            if (response.ok) {
+                alert(responseData);
+                window.location.href = '/login';
+            } else {
+                alert(responseData);
+            }
             
         } catch (error) {
             console.error('Error:', error);
@@ -85,7 +87,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     registerForm.addEventListener('submit', async (event) => {
         event.preventDefault();
 
-        // Daten aus dem Formular abrufen
         const formData = new FormData(loginForm);
         const data = Object.fromEntries(formData.entries());
 
@@ -98,11 +99,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 body: JSON.stringify(data)
             });
 
-            const responseData = await response.text(); // Antworttext lesen
-
-           
-            alert(responseData);
-    
+            if (response.ok) {
+                window.location.href = '/';
+            } else {
+                const responseData = await response.text();
+                alert(responseData);
+            }
 
         } catch (error) {
             console.error('Error:', error);

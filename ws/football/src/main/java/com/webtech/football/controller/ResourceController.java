@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 @Controller
 public class ResourceController {
 
-	@GetMapping("/")
-	public String startEndpoint() {
-		return "index";
-	}
+//	@GetMapping("/")
+//	public String startEndpoint() {
+//		return "index";
+//	}
 
 	@GetMapping("/login")
 	public String loginEndpoint() {
