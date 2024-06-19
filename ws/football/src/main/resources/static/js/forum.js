@@ -1,6 +1,3 @@
-
-
-/*Sidebar*/
 document.addEventListener("DOMContentLoaded", function () {
     const checkbox = document.getElementById("check2");
     const sidebar = document.querySelector(".sidebar");
@@ -28,75 +25,51 @@ document.addEventListener("DOMContentLoaded", function () {
     handleResize(); // Initial call to set the correct sidebar state based on the initial window size
 });
 
-
-
-
-/*Pup-up für Kommentarpost - Löscht alles beim Schließen und erneuten Öffnen*/
 function togglePopup() {
     const popup = document.getElementById("popup-1");
     const isActive = popup.classList.contains("active");
+    const imageOutput = document.getElementById('imageOutput');
+    const userComment = document.getElementById('userComment');
+    const uploadButton = document.getElementById('uploadButton');
 
     if (!isActive) {
-        // Wenn das Popup nicht aktiv ist, lösche die Daten und setze die Größe von imageOutput auf 0
-        const imageOutput = document.getElementById('imageOutput');
-        const userComment = document.getElementById('userComment');
-        const imageHeight = imageOutput.clientHeight; // Höhe des Bildes erfassen
         imageOutput.innerHTML = '';
-        imageOutput.style.height = '0'; // Setze die Größe von imageOutput auf 0
-        userComment.value = ''; // Hier textarea leeren
-
-        // Höhe der Content-Box anpassen
-        const content = document.getElementById('content');
-        content.style.height = (content.clientHeight - imageHeight) + 'px';
-
-        // PhotoUploaded auf false setzen, da kein Bild mehr vorhanden ist
+        imageOutput.style.height = '0';
+        userComment.value = '';
         photoUploaded = false;
-    } else {
-        // PhotoUploaded auf true setzen, da ein Bild vorhanden ist
-        photoUploaded = true;
-    }
-
-    // Umschalten der "active" Klasse des Popups
-    popup.classList.toggle("active");
-
-    // Update des Upload-Buttons entsprechend dem Status von photoUploaded
-    const uploadButton = document.getElementById('uploadButton');
-    if (photoUploaded) {
-        uploadButton.setAttribute('data-tooltip', 'Es kann nur ein Foto hochgeladen werden');
-        uploadButton.disabled = true;
-    } else {
         uploadButton.removeAttribute('data-tooltip');
         uploadButton.disabled = false;
     }
+
+    popup.classList.toggle("active");
+
+    // Laden der Kommentare erneut aufrufen, wenn das Popup geschlossen wird
+    if (isActive && currentTopicId !== null) {
+        loadComments(currentTopicId);
+    }
 }
 
-
-
-
-/* Image hochladen, Größe anpassen, max 1 Bild hochladen */
 let photoUploaded = false;
 const content = document.getElementById('content');
-const initialContentHeight = content.clientHeight;
+const initialContentHeight = content ? content.clientHeight : 0;
 let currentImage = null;
 
 function handleFileChange(event) {
     const file = event.target.files[0];
     if (file) {
         const reader = new FileReader();
-        reader.onload = function(e) {
+        reader.onload = function (e) {
             const img = document.createElement('img');
             img.src = e.target.result;
 
             if (currentImage) {
-                // Bild austauschen
                 currentImage.src = img.src;
             } else {
-                // Neues Bild hinzufügen
                 const closeIcon = document.createElement('button');
                 closeIcon.innerHTML = '&times;';
                 closeIcon.classList.add('close-icon');
 
-                img.onload = function() {
+                img.onload = function () {
                     if (img.naturalWidth > img.naturalHeight) {
                         img.classList.add('landscape');
                     } else {
@@ -115,19 +88,18 @@ function handleFileChange(event) {
                     currentImage = img;
                 };
 
-                closeIcon.addEventListener('click', function() {
+                closeIcon.addEventListener('click', function () {
                     const imageOutput = document.getElementById('imageOutput');
                     imageOutput.innerHTML = '';
                     imageOutput.style.height = '0';
 
-                    content.style.height = initialContentHeight + 'px'; // Setze die ursprüngliche Höhe zurück
+                    content.style.height = initialContentHeight + 'px';
 
                     photoUploaded = false;
                     const uploadButton = document.getElementById('uploadButton');
                     uploadButton.disabled = false;
                     uploadButton.removeAttribute('data-tooltip');
 
-                    // Event-Handling für das Ändern der Datei erneut registrieren
                     document.getElementById('fileInput').addEventListener('change', handleFileChange);
                 });
             }
@@ -136,7 +108,7 @@ function handleFileChange(event) {
     }
 }
 
-document.getElementById('uploadButton').addEventListener('click', function() {
+document.getElementById('uploadButton').addEventListener('click', function () {
     if (photoUploaded) {
         this.setAttribute('data-tooltip', 'Es kann nur ein Foto hochgeladen werden');
         this.disabled = true;
@@ -145,78 +117,65 @@ document.getElementById('uploadButton').addEventListener('click', function() {
     }
 });
 
-// Event-Handling für das Ändern der Datei registrieren
 document.getElementById('fileInput').addEventListener('change', handleFileChange);
 
-// Daten an Backend schicken
-async function postComment() {
-	const comment = document.getElementById('userComment').value;
-	const fileInput = document.getElementById('fileInput');
-	const file = fileInput.files[0];
-
-	if (!comment) {
-		alert('Bitte geben Sie einen Kommentar ein.');
-		return;
-	}
-
-	const formData = new FormData();
-	formData.append('comment', comment);
-	formData.append('image', file);
-	formData.append('topicId', currentTopicId);
-
-	try {
-		const response = await fetch('http://localhost:8080/api/comments', {
-			method: 'POST',
-			body: formData
-		});
-
-		if (!response.ok) {
-			throw new Error('Network response was not ok ' + response.statusText);
-		}
-
-		const result = await response.text();
-		console.log('Erfolgreich gepostet:', result);
-        alert('Kommentar und Bild wurden erfolgreich gepostet!');
-        
-        loadComments(currentTopicId);
-
-	} catch (error) {
-		console.error('Es gab ein Problem mit der Anfrage:', error);
-		alert('Es gab ein Problem beim Posten des Kommentars und Bildes.');
-	}
+function checkAuthStatus() {
+    fetch('/api/auth/status', {
+        method: 'GET',
+        credentials: 'include'
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.authenticated) {
+                document.getElementById('auth-status').innerText = `${data.username}`;
+            } else {
+                document.getElementById('auth-status').innerText = 'Not logged in';
+            }
+        })
+        .catch(error => console.error('Error:', error));
 }
 
-// Event Listener für den Post-Button per ID
+async function postComment() {
+    const comment = document.getElementById('userComment').value;
+    const fileInput = document.getElementById('fileInput');
+    const file = fileInput.files[0];
 
+    if (!comment) {
+        alert('Bitte geben Sie einen Kommentar ein.');
+        return;
+    }
 
+    const formData = new FormData();
+    formData.append('comment', comment);
+    formData.append('image', file);
+    formData.append('topicId', currentTopicId);
 
+    try {
+        const timestamp = new Date().getTime();
+        const url = `http://localhost:8080/api/comments?v=${timestamp}`;
 
-// Daten aus dem Backend laden 
-/*async function loadComments(topicId) {
-	try {
-		const response = await fetch(`http://localhost:8080/api/comments/list?topicId=${topicId}`);
-		if (!response.ok) {
-			throw new Error('Network response was not ok ' + response.statusText);
-		}
+        const response = await fetch(url, {
+            method: 'POST',
+            body: formData
+        });
 
-		const comments = await response.json();
-		const commentSection = document.getElementById(`comment-section-${topicId}`);
-		commentSection.innerHTML = ''; // Leeren der Kommentar-Sektion
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
 
-		comments.forEach(comment => {
-			const commentElement = document.createElement('div');
-			commentElement.classList.add('comment');
-			commentElement.innerHTML = `
-				<p>${comment.text}</p>
-				${comment.fileName ? `<img src="http://localhost:8080/uploads/${comment.fileName}" alt="Comment Image">` : ''}
-			`;
-			commentSection.appendChild(commentElement);
-		});
+        const result = await response.text();
+        console.log('Erfolgreich gepostet:', result);
+        alert('Kommentar und Bild wurden erfolgreich gepostet!');
 
-	} catch (error) {
-		console.error('Es gab ein Problem beim Laden der Kommentare:', error);
-	}
-}*/
+        setTimeout(() => {
+            loadComments(currentTopicId);
+        }, 1000); // 1 Sekunde Verzögerung
+
+    } catch (error) {
+        console.error('Es gab ein Problem mit der Anfrage:', error);
+        alert('Es gab ein Problem beim Posten des Kommentars und Bildes.');
+    }
+}
 
 async function loadComments(topicId) {
     try {
@@ -227,22 +186,21 @@ async function loadComments(topicId) {
 
         const comments = await response.json();
         const commentSection = document.getElementById(`comment-section-${topicId}`);
-        commentSection.innerHTML = ''; // Leeren der Kommentar-Sektion
+        commentSection.innerHTML = '';
+
+        comments.reverse();
 
         comments.forEach(comment => {
-            // Erstellen des übergeordneten Containers
             const commentContainer = document.createElement('div');
             commentContainer.classList.add('comment-container');
 
-            // Profilbildbereich
             const profilePictureSection = document.createElement('div');
             profilePictureSection.classList.add('profile-picture-section');
             const profilePicture = document.createElement('img');
-            profilePicture.src = '/assets/user.png'; // Platzhalterbild oder URL zum Profilbild des Benutzers
+            profilePicture.src = '/assets/user.png';
             profilePicture.alt = 'Profile Picture';
             profilePictureSection.appendChild(profilePicture);
 
-            // Kommentarbereich
             const commentElement = document.createElement('div');
             commentElement.classList.add('comment');
             const userContainer = document.createElement('div');
@@ -250,7 +208,7 @@ async function loadComments(topicId) {
             const userName = document.createElement('p');
             userName.textContent = comment.username;
             userContainer.appendChild(userName);
-            commentElement.appendChild(userContainer); // Benutzercontainer über dem Kommentar hinzufügen
+            commentElement.appendChild(userContainer);
 
             const commentText = document.createElement('p');
             commentText.textContent = comment.text;
@@ -263,11 +221,8 @@ async function loadComments(topicId) {
                 commentElement.appendChild(commentImage);
             }
 
-            // Hinzufügen der erstellten Bereiche zum übergeordneten Container
             commentContainer.appendChild(profilePictureSection);
             commentContainer.appendChild(commentElement);
-
-            // Hinzufügen des übergeordneten Containers zur Kommentar-Sektion
             commentSection.appendChild(commentContainer);
         });
     } catch (error) {
@@ -275,29 +230,24 @@ async function loadComments(topicId) {
     }
 }
 
-
-
-
 let currentTopicId = null;
-// Das richtige Topic Fenster öffnen
+
 function openTopic(topicId) {
-
     currentTopicId = topicId;
-	const tabs = document.querySelectorAll('.nav-link a');
-	const commentSections = document.querySelectorAll('.comment-section');
+    const tabs = document.querySelectorAll('.nav-link a');
+    const commentSections = document.querySelectorAll('.comment-section');
 
-	tabs.forEach(tab => tab.parentElement.classList.remove('active'));
-	commentSections.forEach(section => section.classList.remove('active'));
+    tabs.forEach(tab => tab.parentElement.classList.remove('active'));
+    commentSections.forEach(section => section.classList.remove('active'));
 
-	document.querySelector(`.nav-link:nth-child(${topicId + 3})`).classList.add('active');
-	document.getElementById(`comment-section-${topicId}`).classList.add('active');
+    document.querySelector(`.nav-link:nth-child(${topicId})`).classList.add('active');
+    document.getElementById(`comment-section-${topicId}`).classList.add('active');
 
-	document.getElementById('post-button-container').style.display = 'block';
+    document.getElementById('post-button-container').style.display = 'block';
 
-	loadComments(topicId);
+    loadComments(topicId);
 }
 
-// Funktion, um die Farbe der Links beim Klicken zu ändern
 function markActiveLink(topicId) {
     const links = document.querySelectorAll('.sidebar li .text');
     links.forEach(link => {
@@ -307,4 +257,5 @@ function markActiveLink(topicId) {
     const activeLink = document.querySelector(`.sidebar li:nth-child(${topicId}) .text`);
     if (activeLink) {
         activeLink.classList.add('active');
-    }}
+    }
+}

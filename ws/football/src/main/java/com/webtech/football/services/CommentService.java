@@ -5,9 +5,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
 import com.webtech.football.dto.CommentWithFileDTO;
@@ -24,11 +21,7 @@ public class CommentService {
 	@Autowired
 	private FileRepository fileRepository;
 
-	public Comment addComment(String text, int topic) {
-
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		String username = ((User) authentication.getPrincipal()).getUsername();
-
+	public Comment addComment(String text, int topic, String username) {
 		Comment comment = new Comment();
 		comment.setText(text);
 		comment.setTime(LocalDate.now());

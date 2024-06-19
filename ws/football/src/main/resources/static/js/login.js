@@ -2,33 +2,19 @@ const wrapper = document.querySelector('.wrapper');
 const loginLink = document.querySelector('.login-link');
 const registerLink = document.querySelector('.register-link');
 
-registerLink.addEventListener('click', ()=> {
+registerLink.addEventListener('click', () => {
     wrapper.classList.add('active');
+    console.log('Register link clicked, wrapper class added');
 });
 
-loginLink.addEventListener('click', ()=> {
+loginLink.addEventListener('click', () => {
     wrapper.classList.remove('active');
+    console.log('Login link clicked, wrapper class removed');
 });
-/*
-// Funktion zum Überprüfen des Zustands der Checkbox und zum Aktivieren/Deaktivieren des Buttons
-function checkCheckbox() {
-    const checkbox = document.getElementById('checkbox');
-    const checkboxLabel = document.getElementById('label');
-
-    if (!checkbox.checked) {
-        // Wenn die Checkbox nicht aktiviert ist, ändere die Farbe des Textes
-        checkboxLabel.classList.add('checkbox-warning');
-    } else {
-        // Wenn die Checkbox aktiviert ist, entferne die Warnung
-        checkboxLabel.classList.remove('checkbox-warning');
-    }
-}*/
-
-// Event-Listener für den Button
-
-
 
 document.addEventListener('DOMContentLoaded', (event) => {
+    console.log('DOM fully loaded and parsed');
+
     const registerForm = document.getElementById('registerForm');
     const checkbox = document.getElementById('checkbox');
     const checkboxLabel = document.getElementById('label');
@@ -38,13 +24,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
         if (!checkbox.checked) {
             checkboxLabel.classList.add('checkbox-warning');
+            console.log('Checkbox not checked, warning added');
             return;
         } else {
             checkboxLabel.classList.remove('checkbox-warning');
+            console.log('Checkbox checked, warning removed');
         }
 
         const formData = new FormData(registerForm);
         const data = Object.fromEntries(formData.entries());
+        console.log('Register Form Data:', data);
 
         try {
             const response = await fetch('/api/auth/register', {
@@ -58,23 +47,26 @@ document.addEventListener('DOMContentLoaded', (event) => {
             const responseData = await response.text();
             if (response.ok) {
                 alert(responseData);
+                console.log('Registration successful:', responseData);
                 window.location.href = '/login';
             } else {
                 alert(responseData);
+                console.log('Registration failed:', responseData);
             }
-            
+
         } catch (error) {
-            console.error('Error:', error);
+            console.error('Error during registration:', error);
             alert('Ein Fehler ist aufgetreten: ' + error.message);
         }
     });
 
-
     function checkCheckbox() {
         if (!checkbox.checked) {
             checkboxLabel.classList.add('checkbox-warning');
+            console.log('Checkbox not checked, warning added (button click)');
         } else {
             checkboxLabel.classList.remove('checkbox-warning');
+            console.log('Checkbox checked, warning removed (button click)');
         }
     }
 
@@ -82,13 +74,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
 });
 
 document.addEventListener('DOMContentLoaded', (event) => {
-    const registerForm = document.getElementById('loginForm');
+    console.log('DOM fully loaded and parsed (login form)');
 
-    registerForm.addEventListener('submit', async (event) => {
+    const loginForm = document.getElementById('loginForm');
+
+    loginForm.addEventListener('submit', async (event) => {
         event.preventDefault();
 
         const formData = new FormData(loginForm);
         const data = Object.fromEntries(formData.entries());
+        console.log('Login Form Data:', data);
 
         try {
             const response = await fetch('/api/auth/login', {
@@ -100,14 +95,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
             });
 
             if (response.ok) {
+                console.log('Login successful');
                 window.location.href = '/';
             } else {
                 const responseData = await response.text();
                 alert(responseData);
+                console.log('Login failed:', responseData);
             }
 
         } catch (error) {
-            console.error('Error:', error);
+            console.error('Error during login:', error);
             alert('Ein Fehler ist aufgetreten: ' + error.message);
         }
     });

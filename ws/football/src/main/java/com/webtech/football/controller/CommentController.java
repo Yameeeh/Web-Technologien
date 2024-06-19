@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,7 +40,19 @@ public class CommentController {
 	public ResponseEntity<String> postComment(@RequestParam("comment") String comment,
 			@RequestParam("image") MultipartFile image, @RequestParam("topicId") int topicID) {
 
-		Comment kommentar = commentService.addComment(comment, topicID);
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String username = null;
+
+		if (authentication != null) {
+			if (authentication.getPrincipal() instanceof UserDetails) {
+				username = ((UserDetails) authentication.getPrincipal()).getUsername();
+			} else {
+				username = authentication.getPrincipal().toString();
+			}
+		}
+
+		// Pass the username to the service method
+		Comment kommentar = commentService.addComment(comment, topicID, username);
 
 		// Save image
 		try {
