@@ -8,11 +8,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 @Controller
 public class ResourceController {
 
-//	@GetMapping("/")
-//	public String startEndpoint() {
-//		return "index";
-//	}
-
 	@GetMapping("/login")
 	public String loginEndpoint() {
 		return "login";
@@ -36,16 +31,6 @@ public class ResourceController {
 	@GetMapping("/ergebnisse")
 	public String ergebnisseEndpoint() {
 		return "ergebnisse";
-	}
-
-	@GetMapping("/all")
-	public String allRolesEndpoint() {
-		return "All Roles";
-	}
-
-	@GetMapping("/api/comments")
-	public String commentsEndpoint() {
-		return "forum";
 	}
 
 	@DeleteMapping("/delete")

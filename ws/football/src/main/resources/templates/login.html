@@ -8,41 +8,37 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/login.css">
 </head>
-
 <body>
     <header class="header">
-        <a href="index.html"><img src="/assets/Logo.png" class="logo"></a>
+        <a href="/"><img src="/assets/Logo.png" class="logo"></a>
         <input type="checkbox" id="check">
         <label for="check" class="menu">
             <i class="bx bx-menu" id="icon-menu"></i>
             <i class="bx bx-x" id="close-menu"></i>
         </label>    
         <nav class="navbar">
-            <a href="index.html">Startseite</a>
-            <a href="kader.html">DFB-Kader</a>
-            <a href="stadien.html">Stadien</a>
-            <a href="ergebnisse.html">Ergebnisse</a>
-            <a href="forum.html">Forum</a>
-            <a href="login.html" style="color: #C1A875">Login</a>
+            <a href="/">Startseite</a>
+            <a href="/kader">DFB-Kader</a>
+            <a href="/stadien">Stadien</a>
+            <a href="/ergebnisse">Ergebnisse</a>
+            <a href="/forum">Forum</a>
+            <a href="/login" style="color: #C1A875">Login</a>
         </nav>
-        </header>
+    </header>
     <div class="wrapper">
         <form class="form-box login" id="loginForm">
             <h1>Login</h1>
             <div class="input-box">
-                <input type="text" name="username" placeholder="Benutzername"
-                required>
+                <input type="text" name="username" placeholder="Benutzername" required>
                 <i class='bx bxs-user'></i>
             </div>
             <div class="input-box">
-                <input type="text" name="password" placeholder="Passwort"
-                required>
+                <input type="password" name="password" placeholder="Passwort" required>
                 <i class='bx bxs-lock-alt'></i>
             </div>
             <button type="submit" class="btn">Login</button>
             <div class="link register-link">
-                <p>Du hast noch keinen Account? <a
-                href="#register">Registrieren</a></p>
+                <p>Du hast noch keinen Account? <a href="#register">Registrieren</a></p>
             </div>
         </form>
         
@@ -72,6 +68,5 @@
         </form>
     </div>
     <script src="/js/login.js"></script>
-
 </body>
 </html>
