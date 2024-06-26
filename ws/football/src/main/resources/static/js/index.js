@@ -1,3 +1,5 @@
+
+//Funktion zur Nutzung der Fußzeile
 document.addEventListener('DOMContentLoaded', (event) => {
     const yearSpan = document.getElementById('year');
     const currentYear = new Date().getFullYear();
@@ -35,15 +37,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
     };
 
-    // EmailJS functionality
+    // Newsletter
     (function () {
         document.getElementById('newsletter-form').addEventListener('submit', function (event) {
             event.preventDefault();
 
-            // Get the email input value
+            // Emailadresse des Users
             var emailInput = document.querySelector('input[name="user_email"]').value;
 
-            // Send email to backend
+            // Emailadresse an Backend senden, um sie zu speichern
             fetch('http://localhost:8080/api/newsletter', {
                 method: 'POST',
                 headers: {
