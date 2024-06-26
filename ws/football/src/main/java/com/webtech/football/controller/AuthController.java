@@ -29,6 +29,8 @@ public class AuthController {
 	private RoleRepository roleRepository;
 	private PasswordEncoder passwordEncoder;
 
+	private static final long DEFAULTFILEID = 999;
+
 	@Autowired
 	public AuthController(UserRepository userRepository, RoleRepository roleRepository,
 			PasswordEncoder passwordEncoder) {
@@ -38,17 +40,6 @@ public class AuthController {
 		this.passwordEncoder = passwordEncoder;
 
 	}
-	/*
-	 * @PostMapping("/login") public ResponseEntity<String> login(@RequestBody
-	 * LoginDTO loginData) { try { Authentication authentication =
-	 * authenticationManager.authenticate( new
-	 * UsernamePasswordAuthenticationToken(loginData.getUsername(),
-	 * loginData.getPassword())); //
-	 * SecurityContextHolder.getContext().setAuthentication(authentication);
-	 * 
-	 * return ResponseEntity.ok("Login successful"); } catch (Exception e) { return
-	 * ResponseEntity.status(401).body("Invalid username or password"); } }
-	 */
 
 	@PostMapping("/register")
 	public ResponseEntity<String> register(@RequestBody RegisterDTO registrationData) {
@@ -60,6 +51,7 @@ public class AuthController {
 		user.setUsername(registrationData.getUsername());
 		user.setEmail(registrationData.getEmail());
 		user.setPassword(passwordEncoder.encode(registrationData.getPassword()));
+		user.setFileID(DEFAULTFILEID);
 
 		Role role = roleRepository.findByName("USER");
 		user.setRole(role.getName());

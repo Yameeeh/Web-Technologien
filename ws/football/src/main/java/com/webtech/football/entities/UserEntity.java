@@ -33,4 +33,7 @@ public class UserEntity {
 	@JoinColumn(name = "ROLE_NAME", nullable = false)
 	private String role;
 
+	@JoinColumn(name = "FILE_ID")
+	private long fileID;
+
 }

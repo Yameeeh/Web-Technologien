@@ -38,7 +38,8 @@ public class CommentController {
 
 	@PostMapping
 	public ResponseEntity<String> postComment(@RequestParam("comment") String comment,
-			@RequestParam("image") MultipartFile image, @RequestParam("topicId") int topicID) {
+			@RequestParam(value = "image", required = false) MultipartFile image,
+			@RequestParam("topicId") int topicID) {
 
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String username = null;
@@ -51,19 +52,24 @@ public class CommentController {
 			}
 		}
 
-		// Pass the username to the service method
-		Comment kommentar = commentService.addComment(comment, topicID, username);
+		if (image == null) {
+			Comment kommentar = commentService.addComment(comment, topicID, username);
+			return new ResponseEntity<>("Comment successfully saved", HttpStatus.OK);
+		} else {
 
-		// Save image
-		try {
-			FileEntity savedFile = fileService.storeFile(image, kommentar.getId());
-			System.out.println("File saved with ID: " + savedFile.getId());
-		} catch (IOException e) {
-			e.printStackTrace();
-			return new ResponseEntity<>("Error saving image", HttpStatus.INTERNAL_SERVER_ERROR);
+			// Save image
+			try {
+				FileEntity savedFile = fileService.storeFile(image);
+				Comment kommentar = commentService.addComment(comment, topicID, username, savedFile.getId());
+				System.out.println("File saved with ID: " + savedFile.getId());
+			} catch (IOException e) {
+				e.printStackTrace();
+				return new ResponseEntity<>("Error saving image", HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+
+			return new ResponseEntity<>("Comment and image successfully saved", HttpStatus.OK);
 		}
 
-		return new ResponseEntity<>("Comment and image successfully saved", HttpStatus.OK);
 	}
 
 	@GetMapping("/list")

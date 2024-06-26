@@ -35,4 +35,7 @@ public class Comment {
 	@Column(name = "topic", nullable = false)
 	private int topic;
 
+	@JoinColumn(name = "FILE_ID")
+	private long fileID;
+
 }

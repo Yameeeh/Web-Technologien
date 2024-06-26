@@ -1,3 +1,6 @@
+
+let currentTopicId = null;
+
 document.addEventListener("DOMContentLoaded", function () {
     const checkbox = document.getElementById("check2");
     const sidebar = document.querySelector(".sidebar");
@@ -147,12 +150,15 @@ async function postComment() {
 
     const formData = new FormData();
     formData.append('comment', comment);
-    formData.append('image', file);
     formData.append('topicId', currentTopicId);
+    
+    // Nur hinzufügen, wenn eine Datei ausgewählt ist
+    if (file) {
+        formData.append('image', file);
+    }
 
     try {
-        const timestamp = new Date().getTime();
-        const url = `http://localhost:8080/api/comments?v=${timestamp}`;
+        const url = `http://localhost:8080/api/comments`;
 
         const response = await fetch(url, {
             method: 'POST',
@@ -164,12 +170,19 @@ async function postComment() {
         }
 
         const result = await response.text();
-        console.log('Erfolgreich gepostet:', result);
-        alert('Kommentar und Bild wurden erfolgreich gepostet!');
+        console.log(result);
+        alert(result);
+
+        // Reset the file input after successful upload
+        fileInput.value = '';
+        photoUploaded = false;
+        document.getElementById('uploadButton').disabled = false;
+        document.getElementById('uploadButton').removeAttribute('data-tooltip');
+
 
         setTimeout(() => {
             loadComments(currentTopicId);
-        }, 1000); // 1 Sekunde Verzögerung
+        }, 1000); // 1 Sekunde Verzögerung damit File komplett hochgeladen kann bevor Kommentare reloaded werden
 
     } catch (error) {
         console.error('Es gab ein Problem mit der Anfrage:', error);
@@ -188,16 +201,33 @@ async function loadComments(topicId) {
         const commentSection = document.getElementById(`comment-section-${topicId}`);
         commentSection.innerHTML = '';
 
+        // Überprüfen, ob Kommentare vorhanden sind
+        if (comments.length === 0) {
+            const noCommentsMessage = document.createElement('p');
+            noCommentsMessage.textContent = 'No comments available.';
+            commentSection.appendChild(noCommentsMessage);
+            return; // Beende die Funktion, da keine weiteren Aktionen notwendig sind
+        }
+
         comments.reverse();
 
         comments.forEach(comment => {
             const commentContainer = document.createElement('div');
             commentContainer.classList.add('comment-container');
 
+            
+
             const profilePictureSection = document.createElement('div');
             profilePictureSection.classList.add('profile-picture-section');
             const profilePicture = document.createElement('img');
-            profilePicture.src = '/assets/user.png';
+            profilePicture.onload = function () {
+                // Das Bild wurde erfolgreich geladen
+            };
+            profilePicture.onerror = function () {
+                // Fehler beim Laden des Bildes
+                profilePicture.src = 'http://localhost:8080/uploads/user.png'; // Alternatives Standardbild setzen
+            };
+            profilePicture.src = `http://localhost:8080/uploads/${comment.fileNameUserPFP}`;
             profilePicture.alt = 'Profile Picture';
             profilePictureSection.appendChild(profilePicture);
 
@@ -230,7 +260,6 @@ async function loadComments(topicId) {
     }
 }
 
-let currentTopicId = null;
 
 function openTopic(topicId) {
     currentTopicId = topicId;

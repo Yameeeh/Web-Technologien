@@ -24,7 +24,7 @@ public class FileService {
 	@Autowired
 	private FileRepository fileRepository;
 
-	public FileEntity storeFile(MultipartFile file, long commentID) throws IOException {
+	public FileEntity storeFile(MultipartFile file) throws IOException {
 		String fileName = file.getOriginalFilename();
 		String filePath = uploadDir + "/" + fileName;
 
@@ -43,7 +43,6 @@ public class FileService {
 		fileEntity.setFileName(fileName);
 		fileEntity.setFilePath(filePath);
 		fileEntity.setFileType(file.getContentType());
-		fileEntity.setCommentID(commentID);
 
 		return fileRepository.save(fileEntity);
 	}

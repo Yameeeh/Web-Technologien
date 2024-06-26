@@ -16,4 +16,5 @@ public class CommentWithFileDTO {
 	private LocalDate time;
 	private int topic;
 	private String fileName;
+	private String fileNameUserPFP;
 }

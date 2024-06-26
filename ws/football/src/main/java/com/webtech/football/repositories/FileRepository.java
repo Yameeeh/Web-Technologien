@@ -6,6 +6,4 @@ import com.webtech.football.entities.FileEntity;
 
 public interface FileRepository extends JpaRepository<FileEntity, Long> {
 
-	FileEntity findByCommentID(Long commentID);
-
 }
