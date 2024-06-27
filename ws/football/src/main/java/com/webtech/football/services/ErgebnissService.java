@@ -30,8 +30,6 @@ public class ErgebnissService {
 		Ergebniss ergebniss = new Ergebniss();
 		ergebniss.setMannschaft1(mannschaft1);
 		ergebniss.setMannschaft2(mannschaft2);
-		ergebniss.setGruppe1(mannschaft1.getGruppe());
-		ergebniss.setGruppe2(mannschaft2.getGruppe());
 		ergebniss.setTore1(tore1);
 		ergebniss.setTore2(tore2);
 		ergebniss.setDatum(datum);
