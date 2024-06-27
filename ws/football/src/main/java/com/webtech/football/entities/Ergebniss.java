@@ -32,12 +32,6 @@ public class Ergebniss {
 	@JoinColumn(name = "MANNSCHAFT2_NAME", referencedColumnName = "NAME", nullable = false)
 	private Mannschaft mannschaft2;
 
-	@JoinColumn(name = "MANNSCHAFT1_GRUPPE", referencedColumnName = "GRUPPE", nullable = false)
-	private String gruppe1;
-
-	@JoinColumn(name = "MANNSCHAFT2_GRUPPE", referencedColumnName = "GRUPPE", nullable = false)
-	private String gruppe2;
-
 	@Column(name = "Tore1")
 	private int tore1;
 
