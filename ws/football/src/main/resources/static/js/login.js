@@ -73,39 +73,4 @@ document.addEventListener('DOMContentLoaded', (event) => {
     document.getElementById('button').addEventListener('click', checkCheckbox);
 });
 
-document.addEventListener('DOMContentLoaded', (event) => {
-    console.log('DOM fully loaded and parsed (login form)');
 
-    const loginForm = document.getElementById('loginForm');
-
-    loginForm.addEventListener('submit', async (event) => {
-        event.preventDefault();
-
-        const formData = new FormData(loginForm);
-        const data = Object.fromEntries(formData.entries());
-        console.log('Login Form Data:', data);
-
-        try {
-            const response = await fetch('/api/auth/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            });
-
-            if (response.ok) {
-                console.log('Login successful');
-                window.location.href = '/';
-            } else {
-                const responseData = await response.text();
-                alert(responseData);
-                console.log('Login failed:', responseData);
-            }
-
-        } catch (error) {
-            console.error('Error during login:', error);
-            alert('Ein Fehler ist aufgetreten: ' + error.message);
-        }
-    });
-});

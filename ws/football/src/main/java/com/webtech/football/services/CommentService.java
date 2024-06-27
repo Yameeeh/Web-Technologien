@@ -57,6 +57,10 @@ public class CommentService {
 		return commentRepository.getAllCommentsByTopic(topic);
 	}
 
+	public List<Comment> getAllCommentsByUsername(String username) {
+		return commentRepository.getAllCommentsByUsername(username);
+	}
+
 	public List<CommentWithFileDTO> getAllCommentsWithFileByTopic(int topic) {
 		List<Comment> comments = commentRepository.getAllCommentsByTopic(topic);
 
@@ -73,5 +77,9 @@ public class CommentService {
 			return new CommentWithFileDTO(comment.getId(), comment.getUsername(), comment.getText(), comment.getTime(),
 					comment.getTopic(), fileName, fileNameUserPFP);
 		}).collect(Collectors.toList());
+	}
+
+	public int updateCommentUsername(String newUsername, String currentUsername) {
+		return commentRepository.updateUsername(newUsername, currentUsername);
 	}
 }

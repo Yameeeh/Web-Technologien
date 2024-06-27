@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.webtech.football.entities.FileEntity;
 import com.webtech.football.repositories.FileRepository;
+import com.webtech.football.services.FileService;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -23,6 +24,8 @@ public class FileController {
 
 	@Autowired
 	private FileRepository fileRepository;
+	@Autowired
+	private FileService fileService;
 
 	@GetMapping("/{fileId}")
 	public ResponseEntity<Resource> downloadFile(@PathVariable Long fileId, HttpServletRequest request) {

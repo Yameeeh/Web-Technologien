@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,7 +26,7 @@ public class FileService {
 	private FileRepository fileRepository;
 
 	public FileEntity storeFile(MultipartFile file) throws IOException {
-		String fileName = file.getOriginalFilename();
+		String fileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
 		String filePath = uploadDir + "/" + fileName;
 
 		Path uploadPath = Paths.get(uploadDir);

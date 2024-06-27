@@ -29,22 +29,25 @@
         <div class="box">
             <div class="profilepicture">
                 <label>Profilbild</label>
-                <img src="/assets/user.png">
-                <button class="picturebutton">Bild auswählen</button>
+                <img id="profile-picture" src="/assets/user.png">
+                <input type="file" id="profile-picture-input" style="display: none;">
+                <button class="picturebutton" id="upload-button">Bild auswählen</button>
             </div>
-            <div class="input-container" id="username">
-                <label>Benutzername</label>
-                <input type="text" placeholder="Benutzername"/>
-            </div>
-            <div class="input-container" id="email">
-                <label>Email</label>
-                <input type="email" placeholder="Email"/>
-            </div>
-            <div class="input-container" id="password">
-                <label>Passwort</label>
-                <input type="password" placeholder="Passwort"/>
-            </div>
-            <button type="submit" class="btn">Speichern</button>
+            <form id="profile-form">
+                <div class="input-container">
+                    <label>Benutzername</label>
+                    <input type="text" id="username" placeholder="Benutzername"/>
+                </div>
+                <div class="input-container">
+                    <label>Email</label>
+                    <input type="email" id="email" placeholder="Email"/>
+                </div>
+                <div class="input-container">
+                    <label>Neues Passwort</label>
+                    <input type="text" id="password" placeholder="Neues Passwort"/>
+                </div>
+                <button type="submit" class="btn">Speichern</button>
+            </form>
         </div>
     </div>
     <script src="/js/profile.js"></script>
