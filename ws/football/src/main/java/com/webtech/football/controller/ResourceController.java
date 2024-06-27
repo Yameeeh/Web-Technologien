@@ -34,6 +34,11 @@ public class ResourceController {
 		return "ergebnisse";
 	}
 
+	@GetMapping("/profile")
+	public String profileEndpoint() {
+		return "profile";
+	}
+
 	@DeleteMapping("/delete")
 	public String deleteEndpoint(@RequestBody String s) {
 		return "I am deleting " + s;
