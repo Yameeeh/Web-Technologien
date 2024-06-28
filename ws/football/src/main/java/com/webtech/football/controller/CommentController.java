@@ -36,6 +36,7 @@ public class CommentController {
 	@Value("${file.upload-dir}")
 	private String uploadDir;
 
+	// Kommentar post
 	@PostMapping
 	public ResponseEntity<String> postComment(@RequestParam("comment") String comment,
 			@RequestParam(value = "image", required = false) MultipartFile image,
@@ -72,6 +73,7 @@ public class CommentController {
 
 	}
 
+	// Kommentarliste erstellen für Forum Topics
 	@GetMapping("/list")
 	public List<CommentWithFileDTO> getAllCommentsByTopic(@RequestParam("topicId") int topic) {
 		return commentService.getAllCommentsWithFileByTopic(topic);

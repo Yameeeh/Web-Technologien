@@ -22,6 +22,7 @@ public class NewsletterController {
 	@Autowired
 	NewsletterService newsletterService;
 
+	// Adresse Hinzufügen
 	@PostMapping
 	public ResponseEntity<Map<String, String>> postEmail(@RequestBody Map<String, String> request) {
 		String email = request.get("email");
@@ -31,6 +32,7 @@ public class NewsletterController {
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
+	// Adresse Entfernen
 	@DeleteMapping
 	public ResponseEntity<String> deleteEmail(@RequestParam("email") String email) {
 

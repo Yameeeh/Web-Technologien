@@ -27,6 +27,7 @@ public class FileController {
 	@Autowired
 	private FileService fileService;
 
+	// File über ID laden
 	@GetMapping("/{fileId}")
 	public ResponseEntity<Resource> downloadFile(@PathVariable Long fileId, HttpServletRequest request) {
 		FileEntity fileEntity = fileRepository.findById(fileId)
@@ -34,7 +35,7 @@ public class FileController {
 
 		Resource resource = new FileSystemResource(fileEntity.getFilePath());
 
-		// Try to determine file's content type
+		// FileType
 		String contentType;
 		try {
 			contentType = request.getServletContext().getMimeType(resource.getFile().getAbsolutePath());
@@ -42,7 +43,7 @@ public class FileController {
 			throw new RuntimeException("Could not determine file type.");
 		}
 
-		// Fallback to the default content type if type could not be determined
+		// Fallback Type
 		if (contentType == null) {
 			contentType = "application/octet-stream";
 		}

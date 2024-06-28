@@ -20,10 +20,12 @@ public class UserService {
 	@Autowired
 	private FileService fileService;
 
+	// Speichere/Überschreibe User
 	public void save(UserEntity user) {
 		userRepository.save(user);
 	}
 
+	// Lade UserInfo für die Profile Seite
 	public ProfileDTO getUserDTOByUsername(String username) {
 		UserEntity user = userRepository.findByUsername(username)
 				.orElseThrow(() -> new UsernameNotFoundException("User not found"));
@@ -33,23 +35,23 @@ public class UserService {
 		return dto;
 	}
 
+	// Existiert Username?
 	public boolean existsByUsername(String username) {
 		return userRepository.existsByUsername(username);
 	}
 
+	// Finde durch Username
 	public UserEntity findByUsername(String username) {
 		return userRepository.findByUsername(username)
 				.orElseThrow(() -> new UsernameNotFoundException("User not found"));
 	}
 
+	// PFP Update
 	public String updateProfilePicture(String username, MultipartFile file) throws IOException {
 		UserEntity user = userRepository.findByUsername(username)
 				.orElseThrow(() -> new UsernameNotFoundException("Benutzer nicht gefunden"));
 
-		// Speichere das Profilbild
 		FileEntity fileEntity = fileService.storeFile(file);
-
-		// Aktualisiere die fileID des Benutzers
 		user.setFileID(fileEntity.getId());
 		userRepository.save(user);
 

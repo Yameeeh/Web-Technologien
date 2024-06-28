@@ -27,21 +27,14 @@ public class SecurityConfig {
 		RequestMatcher postCommentMatcher = new AntPathRequestMatcher("/api/comments", "POST");
 
 		http.csrf(AbstractHttpConfigurer::disable)
-				.authorizeHttpRequests(
-						req -> req.requestMatchers("/admin").authenticated().requestMatchers("/forum").authenticated()
-								// .requestMatchers(postCommentMatcher).authenticated()
-								.requestMatchers("/api/auth/login").permitAll().anyRequest().permitAll())
+				.authorizeHttpRequests(req -> req.requestMatchers("/profile").authenticated()
+						.requestMatchers(postCommentMatcher).authenticated().requestMatchers("/api/auth/login")
+						.permitAll().anyRequest().permitAll())
 				.formLogin(formLogin -> formLogin.loginPage("/login").defaultSuccessUrl("/").permitAll())
 
 				.userDetailsService(this.userDetailsService);
 		return http.build();
 	}
-
-//	@Bean
-//	public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
-//			throws Exception {
-//		return authenticationConfiguration.getAuthenticationManager();
-//	}
 
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {

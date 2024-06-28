@@ -24,23 +24,26 @@ import com.webtech.football.repositories.UserRepository;
 @RequestMapping("/api/auth")
 public class AuthController {
 
-	// private AuthenticationManager authenticationManager;
 	private UserRepository userRepository;
 	private RoleRepository roleRepository;
 	private PasswordEncoder passwordEncoder;
 
+	// Wenn der Benutzer erstellt wird soll ihm ein Default Profilbild zugeteilt
+	// werden.
+	// Es muss in der DB ein entsprechendes File mit dieser ID manuell
+	// bereitgestellt werden.
 	private static final long DEFAULTFILEID = 999;
 
 	@Autowired
 	public AuthController(UserRepository userRepository, RoleRepository roleRepository,
 			PasswordEncoder passwordEncoder) {
-		// this.authenticationManager = authenticationManager;
 		this.userRepository = userRepository;
 		this.roleRepository = roleRepository;
 		this.passwordEncoder = passwordEncoder;
 
 	}
 
+	// Register Methode
 	@PostMapping("/register")
 	public ResponseEntity<String> register(@RequestBody RegisterDTO registrationData) {
 		if (userRepository.existsByUsername(registrationData.getUsername())) {
@@ -60,6 +63,7 @@ public class AuthController {
 		return new ResponseEntity<>("Der Benutzer wurde erfolgreich angelegt.", HttpStatus.OK);
 	}
 
+	// War ein Versuch den Auth-Status im Frontend anzuzeigen
 	@GetMapping("/status")
 	public ResponseEntity<Map<String, Object>> getAuthStatus(Authentication authentication) {
 		Map<String, Object> response = new HashMap<>();

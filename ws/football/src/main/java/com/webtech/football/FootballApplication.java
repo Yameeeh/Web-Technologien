@@ -17,6 +17,7 @@ public class FootballApplication implements CommandLineRunner {
 		SpringApplication.run(FootballApplication.class, args);
 	}
 
+	// Erstellen der Upload Directory falls nicht gefunden
 	@Override
 	public void run(String... args) throws Exception {
 		File uploadDirectory = new File(uploadDir);

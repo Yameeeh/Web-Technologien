@@ -26,6 +26,7 @@ public class CommentService {
 	@Autowired
 	private UserRepository userRepository;
 
+	// Kommentar mit Bild speichern
 	public Comment addComment(String text, int topic, String username, long fileId) {
 		Comment comment = new Comment();
 		comment.setText(text);
@@ -36,6 +37,7 @@ public class CommentService {
 		return commentRepository.save(comment);
 	}
 
+	// Kommentar ohne Bild speichern
 	public Comment addComment(String text, int topic, String username) {
 		Comment comment = new Comment();
 		comment.setText(text);
@@ -45,22 +47,12 @@ public class CommentService {
 		return commentRepository.save(comment);
 	}
 
-	public Comment saveComment(Comment comment) {
-		return commentRepository.save(comment);
-	}
-
-	public List<Comment> getAllComments() {
-		return commentRepository.findAll();
-	}
-
+	// Alle Kommentare aus einem Topic
 	public List<Comment> getAllCommentsByTopic(int topic) {
 		return commentRepository.getAllCommentsByTopic(topic);
 	}
 
-	public List<Comment> getAllCommentsByUsername(String username) {
-		return commentRepository.getAllCommentsByUsername(username);
-	}
-
+	// Alle Kommentare und entsprechende Bilder und Profile-Pictures
 	public List<CommentWithFileDTO> getAllCommentsWithFileByTopic(int topic) {
 		List<Comment> comments = commentRepository.getAllCommentsByTopic(topic);
 
@@ -79,6 +71,7 @@ public class CommentService {
 		}).collect(Collectors.toList());
 	}
 
+	// Für alle Kommentare mit Username xyz den Username ändern
 	public int updateCommentUsername(String newUsername, String currentUsername) {
 		return commentRepository.updateUsername(newUsername, currentUsername);
 	}

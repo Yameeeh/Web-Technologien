@@ -12,6 +12,7 @@ public class NewsletterService {
 	@Autowired
 	private NewsletterRepository newsletterRepository;
 
+	// Adresse dem Newsletter hinzufügen
 	public NewsletterAdresse saveAdresse(String email) {
 
 		NewsletterAdresse newsletterAdresse = new NewsletterAdresse();
@@ -20,6 +21,7 @@ public class NewsletterService {
 		return newsletterRepository.save(newsletterAdresse);
 	}
 
+	// Adresse dem Newsletter entfernen
 	public void deleteAdresse(String email) {
 
 		newsletterRepository.deleteByEmail(email);

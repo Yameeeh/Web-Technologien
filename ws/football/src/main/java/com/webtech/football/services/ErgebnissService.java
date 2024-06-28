@@ -19,6 +19,7 @@ public class ErgebnissService {
 	@Autowired
 	private MannschaftRepository mannschaftRepository;
 
+	// Ergebniss speichern
 	public Ergebniss saveErgebniss(String name1, String name2, int tore1, int tore2, LocalDate datum) {
 
 		Mannschaft mannschaft1 = mannschaftRepository.findByName(name1)

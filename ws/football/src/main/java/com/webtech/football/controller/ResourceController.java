@@ -2,9 +2,7 @@ package com.webtech.football.controller;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public class ResourceController {
@@ -38,10 +36,4 @@ public class ResourceController {
 	public String profileEndpoint() {
 		return "profile";
 	}
-
-	@DeleteMapping("/delete")
-	public String deleteEndpoint(@RequestBody String s) {
-		return "I am deleting " + s;
-	}
-
 }

@@ -32,12 +32,14 @@ public class UserProfileController {
 	@Autowired
 	private CommentService commentService;
 
+	// Profil-Infos laden
 	@GetMapping
 	public ResponseEntity<ProfileDTO> getUserProfile(Principal principal) {
 		ProfileDTO dto = userService.getUserDTOByUsername(principal.getName());
 		return ResponseEntity.ok(dto);
 	}
 
+	// User-Info updaten
 	@PutMapping
 	public ResponseEntity<ProfileDTO> updateUserProfile(@RequestBody UserEntity user, Principal principal) {
 		UserEntity currentUser = userService.findByUsername(principal.getName());
@@ -72,6 +74,7 @@ public class UserProfileController {
 		return ResponseEntity.ok(dto);
 	}
 
+	// User-Profilepicture updaten
 	@PostMapping("/picture")
 	public ResponseEntity<ProfileDTO> updateProfilePicture(@RequestParam("profilePicture") MultipartFile file,
 			Principal principal) {

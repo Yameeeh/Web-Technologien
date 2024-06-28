@@ -25,6 +25,7 @@ public class FileService {
 	@Autowired
 	private FileRepository fileRepository;
 
+	// File im System und Datenbank speichern
 	public FileEntity storeFile(MultipartFile file) throws IOException {
 		String fileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
 		String filePath = uploadDir + "/" + fileName;
