@@ -6,6 +6,7 @@
     scroll-behavior: smooth;
 }
 
+/*Navigationsbar*/
 .header {
     position: fixed;
     top: 0;
@@ -47,65 +48,64 @@
     width: 100%;
   }
   
-  
   .navbar {
-  display: block;
-  margin-right: 20px;
+    display: block;
+    margin-right: 20px;
   }
   
   .navbar a {
     position: relative;
-  font-size: 1.15rem;
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-  margin-left: 2.5rem;
-  transition: .3s ease;
-  font-size: 20px;
-  
+    font-size: 1.15rem;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 2.5rem;
+    transition: .3s ease;
+    font-size: 20px;
   }
+
 .navbar.changed a {
     color: black;
-    }
+}
 
-    .navbar a:hover {
-        color: #C1A875;
-        }
+.navbar a:hover {
+    color: #C1A875;
+}
         
-        #check {
-        display: none;
-        }
+#check {
+    display: none;
+}
         
-        .menu {
-        position: absolute;
-        right: 5%;
-        color: white;
-        font-size: 2rem;
-        cursor: pointer;
-        display: none;
-        }
+.menu {
+    position: absolute;
+    right: 5%;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    display: none;
+}
         
-        @media (max-width: 1160px) {
-        .header {
-          padding: 1.3rem 5%;
-          background-color: transparent;
-        }
-        }
+@media (max-width: 1160px) {
+    .header {
+        padding: 1.3rem 5%;
+        background-color: transparent;
+    }
+}
         
-        @media (max-width: 1030px) {
-        .menu {
+@media (max-width: 1030px) {
+    .menu {
           display: inline-flex;
-        }
-        #check:checked ~ .menu #icon-menu {
+    }
+    #check:checked ~ .menu #icon-menu {
         display: none;
-        }
-        .menu #close-menu {
+    }
+    .menu #close-menu {
         display: none;
-        }
-        #check:checked ~ .menu #close-menu {
+    }
+    #check:checked ~ .menu #close-menu {
         display: block;
-        }
-        .navbar {
+    }
+    .navbar {
         position: absolute;
         top: 100%;
         left: 0%;
@@ -114,26 +114,24 @@
         background: rgb(255, 255, 255, .15);
         backdrop-filter: blur(50px);
         overflow: hidden;
-        transition: .2s ease;
-        
-        }
-        #check:checked ~ .navbar {
+        transition: .2s ease; 
+    }
+    #check:checked ~ .navbar {
         height: 23rem;
-        }
-        .navbar a {
+    }
+    .navbar a {
         display: block;
         height: 35px;
         margin: 1.5rem auto;
         text-align: center;
-        
-        font-size: 20px;
-        
-        }
-        #check:checked ~ .navbar a{
-          transform: translateY(0);
-        }
-        }
+        font-size: 20px;  
+    }
+    #check:checked ~ .navbar a{
+        transform: translateY(0);
+    }
+}
 
+/*Slideshow*/
 .slider {
     position: relative;
     width: 100%;
@@ -264,7 +262,7 @@
     text-align: center;
     margin-left: 6px;
     margin-top: 12px;
-    }
+}
 
 .text .rot .button:hover {
     border-color: red;
@@ -286,7 +284,7 @@
 .button:hover {
     border-color: rgb(1, 1, 123);
 }
-
+/*Responsives Design*/
     @media screen and (max-width: 1381px) {
         .text {
             top: 50%;
@@ -362,13 +360,12 @@
         justify-content: center;
         flex-direction: column;
         background-color:#f1f3f8;
-        
 }
 .main-container {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(2, 1fr);
-        gap: 15px; /* Optional: Abstand zwischen den Fenstern */
+        gap: 15px;
         height: 100vh;
         width: 80%;
         padding: 70px;
