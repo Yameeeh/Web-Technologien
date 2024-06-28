@@ -1,4 +1,4 @@
-
+/*Anpassen der Sidebar*/
 let currentTopicId = null;
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -25,9 +25,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     window.addEventListener("resize", handleResize);
-    handleResize(); // Initial call to set the correct sidebar state based on the initial window size
+    handleResize(); 
 });
 
+/*Öffnen des Popup-Fensters*/
 function togglePopup() {
     const popup = document.getElementById("popup-1");
     const isActive = popup.classList.contains("active");
@@ -52,6 +53,7 @@ function togglePopup() {
     }
 }
 
+/*Hochladen der Fotos (Sowohl hochkant, als auch queer)*/
 let photoUploaded = false;
 const content = document.getElementById('content');
 const initialContentHeight = content ? content.clientHeight : 0;
@@ -111,6 +113,7 @@ function handleFileChange(event) {
     }
 }
 
+/*Foto-Upload auf ein Foto beschränken*/
 document.getElementById('uploadButton').addEventListener('click', function () {
     if (photoUploaded) {
         this.setAttribute('data-tooltip', 'Es kann nur ein Foto hochgeladen werden');
@@ -138,6 +141,7 @@ function checkAuthStatus() {
         .catch(error => console.error('Error:', error));
 }
 
+/*Posten der Kommentare (Das Schicken der Daten an das Backend)*/
 async function postComment() {
     const comment = document.getElementById('userComment').value;
     const fileInput = document.getElementById('fileInput');
@@ -173,7 +177,6 @@ async function postComment() {
         console.log(result);
         alert(result);
 
-        // Reset the file input after successful upload
         fileInput.value = '';
         photoUploaded = false;
         document.getElementById('uploadButton').disabled = false;
@@ -182,7 +185,7 @@ async function postComment() {
 
         setTimeout(() => {
             loadComments(currentTopicId);
-        }, 1000); // 1 Sekunde Verzögerung damit File komplett hochgeladen kann bevor Kommentare reloaded werden
+        }, 1000); 
 
     } catch (error) {
         console.error('Es gab ein Problem mit der Anfrage:', error);
@@ -190,6 +193,7 @@ async function postComment() {
     }
 }
 
+/*Laden und Anzeigen der Kommentare aus dem Backend*/
 async function loadComments(topicId) {
     try {
         const response = await fetch(`http://localhost:8080/api/comments/list?topicId=${topicId}`);
@@ -260,7 +264,7 @@ async function loadComments(topicId) {
     }
 }
 
-
+/*Aufteilung in 5 Topics, jeder Kommentar darf nur im dafür vorhergesehen Topic angezeigt werden*/
 function openTopic(topicId) {
     currentTopicId = topicId;
     const tabs = document.querySelectorAll('.nav-link a');
@@ -277,6 +281,7 @@ function openTopic(topicId) {
     loadComments(topicId);
 }
 
+/*Aktuell geöffnetes Topic farblich hervorheben*/
 function markActiveLink(topicId) {
     const links = document.querySelectorAll('.sidebar li .text');
     links.forEach(link => {

@@ -1,3 +1,4 @@
+/*Wechsel von Login zu Registration und umgekehrt*/
 const wrapper = document.querySelector('.wrapper');
 const loginLink = document.querySelector('.login-link');
 const registerLink = document.querySelector('.register-link');
@@ -12,6 +13,8 @@ loginLink.addEventListener('click', () => {
     console.log('Login link clicked, wrapper class removed');
 });
 
+/*Eingegebene Daten werden bei Registrierung an das Backend geschickt 
+und dort gespeichert*/
 document.addEventListener('DOMContentLoaded', (event) => {
     console.log('DOM fully loaded and parsed');
 
@@ -37,7 +40,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
         try {
             const response = await fetch('/api/auth/register', {
-                method: 'POST',
+                method: 'POST',     //POST-Methode
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -60,6 +63,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
     });
 
+    /*Nutzungsbedingungen müssen akzeptiert werden*/
     function checkCheckbox() {
         if (!checkbox.checked) {
             checkboxLabel.classList.add('checkbox-warning');
