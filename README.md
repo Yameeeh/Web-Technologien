@@ -25,6 +25,6 @@ Installationsanleitung:<br/>
   11: Datenbank aktualisieren<br/>
   12: Roles Tabelle -> Einträge (id=1, name=ADMIN); (id=0, name=USER) einfügen.<br/>
   13: Es muss ein default UserIcon mit der ID 999 eingefügt werden. Ein beliebiges Bild kann genommen werden.<br/>
-  File Tabelle -> Eintrag (id = 999, name = "Filename und Format", path = src/main/resources/static/uploads/"Filename und Endung", type = image/Format)<br/>
+  File Tabelle -> Eintrag (id = 999, name = "Filename und Type", path = src/main/resources/static/uploads/"Filename und Type", type = image/Type)<br/>
   bsp: (id = 999, name = user.png, path = src/main/resources/static/uploads/user.png, type = image/png)<br/>
   Unter static/assets/user.png liegt das angedachte default image.
