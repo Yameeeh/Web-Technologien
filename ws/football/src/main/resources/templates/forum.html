@@ -11,24 +11,25 @@
     </head>
 
     <body>
-        <header class="header">
-    <a href="/"><img src="/assets/Logo.png" class="logo"></a>
-    <input type="checkbox" id="check">
-    <label for="check" class="menu">
-        <i class="bx bx-menu" id="icon-menu"></i>
-        <i class="bx bx-x" id="close-menu"></i>
-    </label>
-    <nav class="navbar">
-        <a href="/">Startseite</a>
-        <a href="/kader">DFB-Kader</a>
-        <a href="/stadien">Stadien</a>
-        <a href="/ergebnisse">Ergebnisse</a>
-        <a href="/forum" style="color: #C1A875">Forum</a>
-        <a href="/login" id="login-link">Login</a>
-        <span id="auth-status"><p></p></span>
-    </nav>
-</header>
-
+    <!--Navigationsbar-->
+    <header class="header">
+        <a href="/"><img src="/assets/Logo.png" class="logo"></a>
+        <input type="checkbox" id="check">
+        <label for="check" class="menu">
+            <i class="bx bx-menu" id="icon-menu"></i>
+            <i class="bx bx-x" id="close-menu"></i>
+        </label>
+        <nav class="navbar">
+            <a href="/">Startseite</a>
+            <a href="/kader">DFB-Kader</a>
+            <a href="/stadien">Stadien</a>
+            <a href="/ergebnisse">Ergebnisse</a>
+            <a href="/forum" style="color: #C1A875">Forum</a>
+            <a href="/login" id="login-link">Login</a>
+            <span id="auth-status"><p></p></span>
+        </nav>
+    </header>
+    <!--Sidebar-->
         <div class="container">
             <aside class="sidebar">
                     <input type="checkbox" id="check2">
@@ -37,26 +38,8 @@
                         <i class="bx bx-x" id="close-menu2"></i>
                     </label>
                     <div class="menu-block">
-                    <!--<li class="nav-link">
-                        <a href="#start" onclick="markActiveLink(1)">
-                            <img src="/assets/Home.png" class="sidebar-icon" id="icon1"></i>
-                            <span class="text nav-text">Startseite</span>
-                        </a>
-                    </li>
-                    <li class="nav-link">
-                        <a href="#" onclick="markActiveLink(2)">
-                            <img src="/assets/Angesagt.png" class="sidebar-icon" id="icon2"></i>
-                            <span class="text nav-text">Angesagt</span>
-                        </a>
-                    </li>
-                    <li class="nav-link">
-                        <a href="#" onclick="markActiveLink(3)">
-                            <img src="/assets/icon-uhr.png" class="sidebar-icon" id="icon3"></i>
-                            <span class="text nav-text">Zuletzt geteilt</span>
-                        </a>
-                    </li>-->
-                    <!-- <div class="strich">
-                    </div> //-->
+                    
+                    <!--Sidebar-Topic-Links-->
                     <li class="nav-link">
                         <a href="#1" onclick="openTopic(1); markActiveLink(1)">
                             <img src="/assets/icon-topic.png" class="sidebar-icon" id="icon4"></i>
@@ -87,12 +70,11 @@
                             <span class="text nav-text">Whatever</span>
                         </a>
                     </li>
-                    <!-- <div class="strich">
-                    </div> //-->
                     <li class="nav-link" id="post-button-container" style="display: none;">
                         <button onclick="togglePopup()" class="button-18">Posten</button>
                     </li>
                 </aside>
+                <!--Popup - Kommentare posten-->
                 <div class="popup" id="popup-1">
                     <div class="overlay"></div>
                     <div class="content" id="content">
@@ -121,7 +103,7 @@
                         </div>
                     </div>
                 </div>
-                
+                <!--Anzeigen der Kommentare-->
                 <main class="main">
                     <div class="commentsection">
                         <div id="comment-section-1" class="comment-section">

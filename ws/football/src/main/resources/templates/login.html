@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/css/login.css">
 </head>
 <body>
+     <!--Navigationsbar-->
     <header class="header">
         <a href="/"><img src="/assets/Logo.png" class="logo"></a>
         <input type="checkbox" id="check">
@@ -25,7 +26,10 @@
             <a href="/login" style="color: #C1A875">Login</a>
         </nav>
     </header>
+    <!--Loginbox-->
     <div class="wrapper">
+        <!--Beim Login findet direkt hier die Verknüpfung mit dem Backend statt;
+            Verknüpfung im js-Code hat Probleme verursacht.-->
         <form method="post" action="/login" class="form-box login">
             <h1>Login</h1>
             <div class="input-box">
@@ -41,7 +45,7 @@
                 <p>Du hast noch keinen Account? <a href="#register">Registrieren</a></p>
             </div>
         </form>
-        
+        <!--Registrationsbox-->
         <form class="form-box register" id="registerForm">
             <h1>Registrieren</h1>
             <div class="input-box">
